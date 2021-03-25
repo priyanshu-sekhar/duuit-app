@@ -1,6 +1,6 @@
 import 'package:duuit/src/provider/auth_provider.dart';
 import 'package:duuit/src/screens/login_screen.dart';
-import 'package:duuit/src/screens/onboarding/onboarding_screeen_1.dart';
+import 'package:duuit/src/screens/onboarding/onboarding_screen_1.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_2.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_3.dart';
 import 'package:flutter/cupertino.dart';

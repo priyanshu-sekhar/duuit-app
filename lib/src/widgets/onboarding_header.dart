@@ -16,7 +16,7 @@ class OnboardingHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppBackButton(),
-          buildHeader()
+          header != null ? buildHeader() : Container()
         ],
       ),
     );

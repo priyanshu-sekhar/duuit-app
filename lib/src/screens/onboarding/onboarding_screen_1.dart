@@ -1,5 +1,7 @@
 import 'package:duuit/src/screens/onboarding/onboarding_screen_2.dart';
+import 'package:duuit/src/widgets/continue_button.dart';
 import 'package:duuit/src/widgets/header.dart';
+import 'package:duuit/src/widgets/onboarding_header.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,15 +13,19 @@ class OnboardingScreen1 extends StatelessWidget {
     return Scaffold(
         appBar: Header(),
         body: Container(
-          margin: EdgeInsets.only(left: 15, top: 20),
+          margin: EdgeInsets.only(top: 20),
           child: Stack(
-            children: [backButton(context), onboardingSection(context)],
+            children: [
+              OnboardingHeader(),
+              onboardingSection(context)
+            ],
           ),
         ));
   }
 
   Widget onboardingSection(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(left: 60, right: 60),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -29,7 +35,7 @@ class OnboardingScreen1 extends StatelessWidget {
           Padding(padding: EdgeInsets.only(bottom: 15)),
           userBio(),
           Padding(padding: EdgeInsets.only(bottom: 42)),
-          continueButton(context),
+          ContinueButton(route: OnboardingScreen2.route),
           Padding(padding: EdgeInsets.only(bottom: 48)),
           Image.asset('assets/g1.jpg',)
         ],
@@ -44,40 +50,6 @@ class OnboardingScreen1 extends StatelessWidget {
     );
   }
 
-  Widget continueButton(BuildContext context) {
-    return ElevatedButton(
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF1071E2)),
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-        padding:
-        MaterialStateProperty.all(EdgeInsets.only(top: 12, bottom: 12, left: 20, right: 13)),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            'Continue',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w600,
-              fontSize: 14
-            ),
-          ),
-          Padding(padding: EdgeInsets.only(right: 10)),
-          Icon(
-            Icons.keyboard_arrow_right_outlined,
-            color: Colors.white,
-          ),
-        ],
-        mainAxisAlignment: MainAxisAlignment.center,
-      ),
-      onPressed: () {
-        Navigator.pushNamed(context, OnboardingScreen2.route);
-      },
-    );
-  }
-
   Widget profilePic() {
     return Container(
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
@@ -88,7 +60,6 @@ class OnboardingScreen1 extends StatelessWidget {
   Widget userName() {
     return Container(
       height: 40,
-      margin: EdgeInsets.only(left: 45, right: 60),
       child: TextField(
         decoration: textFieldDecoration(hintText: 'Choose a cool username'),
       ),
@@ -98,7 +69,6 @@ class OnboardingScreen1 extends StatelessWidget {
   Widget userBio() {
     return Container(
       height: 144,
-      margin: EdgeInsets.only(left: 45, right: 60),
       child: TextField(
         minLines: 10,
         maxLines: 10,

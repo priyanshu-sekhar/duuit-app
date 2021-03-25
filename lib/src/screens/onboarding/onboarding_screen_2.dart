@@ -1,6 +1,5 @@
 import 'package:duuit/src/args/onboarding/onboarding_screen_3_args.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_3.dart';
-import 'package:duuit/src/widgets/app_back_button.dart';
 import 'package:duuit/src/widgets/header.dart';
 import 'package:duuit/src/widgets/onboarding_header.dart';
 import 'package:flutter/cupertino.dart';
