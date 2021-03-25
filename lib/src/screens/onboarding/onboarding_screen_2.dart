@@ -1,3 +1,5 @@
+import 'package:duuit/src/args/onboarding/onboarding_screen_3_args.dart';
+import 'package:duuit/src/screens/onboarding/onboarding_screen_3.dart';
 import 'package:duuit/src/widgets/app_back_button.dart';
 import 'package:duuit/src/widgets/header.dart';
 import 'package:duuit/src/widgets/onboarding_header.dart';
@@ -5,6 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen2 extends StatelessWidget {
+  static const route = '/onboarding/2';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +17,10 @@ class OnboardingScreen2 extends StatelessWidget {
           margin: EdgeInsets.only(top: 20),
           child: Column(
             children: [
-              backButtonWithHeader(context),
+              OnboardingHeader(
+                header: 'What brings you to ',
+                highlightedText: 'duuit!',
+              ),
               onboardingSection(context),
               Image.asset('assets/g2.jpg')
             ],
@@ -21,30 +28,15 @@ class OnboardingScreen2 extends StatelessWidget {
         ));
   }
 
-  Widget backButtonWithHeader(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(left: 15, right: 64),
-      alignment: Alignment.topLeft,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppBackButton(),
-          OnboardingHeader(
-            header: 'What brings you to ',
-            highlightedText: 'duuit!',
-          )
-        ],
-      ),
-    );
-  }
-
   Widget onboardingSection(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 20, left: 36, right: 36, bottom: 42),
+      margin: EdgeInsets.only(top: 40, left: 36, right: 36, bottom: 42),
       child: Column(
         children: [
-          categoriesRow(context, category1: 'reading.png', category2: 'meditate.png'),
-          categoriesRow(context, category1: 'workout.png', category2: 'misc.png')
+          categoriesRow(context,
+              category1: 'reading', category2: 'meditate'),
+          categoriesRow(context,
+              category1: 'workout', category2: 'misc')
         ],
       ),
     );
@@ -61,12 +53,25 @@ class OnboardingScreen2 extends StatelessWidget {
   }
 
   Widget categoryImage(BuildContext context, String asset) {
-    return Container(
-      child: Image.asset(
-        'assets/$asset',
-        height: 160,
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          OnboardingScreen3.route,
+          arguments: OnboardingScreen3Args(
+            selectedCategory: asset,
+          ),
+        );
+      },
+      child: Container(
+        child: Image.asset(
+          'assets/$asset.png',
+          height: 160,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+        ),
       ),
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
     );
   }
 }

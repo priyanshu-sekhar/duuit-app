@@ -1,8 +1,11 @@
+import 'package:duuit/src/screens/onboarding/onboarding_screen_2.dart';
 import 'package:duuit/src/widgets/header.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen1 extends StatelessWidget {
+  static const route = '/onboarding/1';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +73,7 @@ class OnboardingScreen1 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
       ),
       onPressed: () {
-        Navigator.pushNamed(context, '/onboarding/2');
+        Navigator.pushNamed(context, OnboardingScreen2.route);
       },
     );
   }
