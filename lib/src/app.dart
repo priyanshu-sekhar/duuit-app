@@ -1,6 +1,7 @@
 import 'package:duuit/src/provider/auth_provider.dart';
 import 'package:duuit/src/screens/login_screen.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screeen_1.dart';
+import 'package:duuit/src/screens/onboarding/onboarding_screen_2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -29,6 +30,10 @@ class App extends StatelessWidget {
       case '/onboarding/1':
         return MaterialPageRoute(builder: (context) {
           return OnboardingScreen1();
+        });
+      case '/onboarding/2':
+        return MaterialPageRoute(builder: (context) {
+          return OnboardingScreen2();
         });
       default:
         return MaterialPageRoute(builder: (context) {

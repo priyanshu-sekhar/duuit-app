@@ -37,15 +37,7 @@ class OnboardingScreen1 extends StatelessWidget {
 
   Widget backButton(BuildContext context) {
     return Positioned(
-      child: IconButton(
-        icon: Icon(
-          Icons.arrow_back,
-          color: Color(0xFF1071E2),
-        ),
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-      ),
+      child: BackButton(),
     );
   }
 
@@ -78,7 +70,7 @@ class OnboardingScreen1 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
       ),
       onPressed: () {
-        Navigator.of(context).pop();
+        Navigator.pushNamed(context, '/onboarding/2');
       },
     );
   }
