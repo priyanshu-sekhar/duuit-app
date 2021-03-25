@@ -9,10 +9,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = AuthProvider.of(context);
-    final toolbarHeight = MediaQuery
-        .of(context)
-        .size
-        .height * 0.4;
+    final toolbarHeight = MediaQuery.of(context).size.height * 0.4;
 
     return Scaffold(
       appBar: AppBar(
@@ -33,47 +30,50 @@ class LoginScreen extends StatelessWidget {
         ),
         elevation: 5.0,
       ),
-      body: buildLogin(bloc),
+      body: buildLogin(context, bloc),
     );
   }
 
-  Widget buildLogin(AuthBloc bloc) {
+  Widget buildLogin(BuildContext context, AuthBloc bloc) {
     return Container(
       alignment: Alignment.center,
       margin: EdgeInsets.only(right: 60, left: 60, top: 80),
       child: Column(
         children: [
-          buildLoginButton('google.png', 'Login with Google'),
+          buildLoginButton(context, 'google.png', 'Login with Google'),
           Padding(padding: EdgeInsets.only(bottom: 20)),
-          buildLoginButton('fb.png', 'Login with Facebook')
+          buildLoginButton(context, 'fb.png', 'Login with Facebook')
         ],
         mainAxisAlignment: MainAxisAlignment.start,
       ),
     );
   }
 
-  Widget buildLoginButton(String image, String text) {
+  Widget buildLoginButton(BuildContext context, String image, String text) {
     return ElevatedButton(
-        onPressed: () {},
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-          padding: MaterialStateProperty.all(
-              EdgeInsets.only(top: 12, bottom: 12)),
-        ),
-        child: Row(
-          children: [
-            Image.asset('assets/$image'),
-            Padding(padding: EdgeInsets.only(right: 10)),
-            Text(
-              text,
-              style: TextStyle(
-                color: Color(0xFF06172C),
-              ),
-            )
-          ],
-          mainAxisAlignment: MainAxisAlignment.center,
-        ));
+      onPressed: () {
+        Navigator.pushNamed(context, '/onboarding/1');
+      },
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+        padding:
+            MaterialStateProperty.all(EdgeInsets.only(top: 12, bottom: 12)),
+      ),
+      child: Row(
+        children: [
+          Image.asset('assets/$image'),
+          Padding(padding: EdgeInsets.only(right: 10)),
+          Text(
+            text,
+            style: TextStyle(
+              color: Color(0xFF06172C),
+            ),
+          )
+        ],
+        mainAxisAlignment: MainAxisAlignment.center,
+      ),
+    );
   }
 }
