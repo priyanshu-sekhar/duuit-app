@@ -13,7 +13,6 @@ class OnboardingScreen2 extends StatelessWidget {
     return Scaffold(
         appBar: Header(),
         body: Container(
-          margin: EdgeInsets.only(top: 20),
           child: Column(
             children: [
               OnboardingHeader(

@@ -1,4 +1,5 @@
 import 'package:duuit/src/args/onboarding/onboarding_screen_3_args.dart';
+import 'package:duuit/src/screens/onboarding/onboarding_screen_4.dart';
 import 'package:duuit/src/widgets/continue_button.dart';
 import 'package:duuit/src/widgets/header.dart';
 import 'package:duuit/src/widgets/onboarding_header.dart';
@@ -16,7 +17,6 @@ class OnboardingScreen3 extends StatelessWidget {
     return Scaffold(
       appBar: Header(),
       body: Container(
-        margin: EdgeInsets.only(top: 20),
         child: Column(
           children: [
             OnboardingHeader(
@@ -30,7 +30,7 @@ class OnboardingScreen3 extends StatelessWidget {
             Padding(padding: EdgeInsets.only(top: 27)),
             doItFor(),
             Padding(padding: EdgeInsets.only(top: 48)),
-            ContinueButton(),
+            ContinueButton(route: OnboardingScreen4.route),
             Padding(padding: EdgeInsets.only(top: 48)),
             Image.asset('assets/g2.jpg')
           ],
