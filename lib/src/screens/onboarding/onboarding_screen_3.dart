@@ -103,7 +103,7 @@ class OnboardingScreen3 extends StatelessWidget {
                       BoxShadow(
                         offset: Offset(0, 5),
                         blurRadius: 5,
-                        color: Colors.black12,
+                        color: Color.fromRGBO(6, 23, 44, 0.09),
                       ),
                     ],
                     borderRadius: BorderRadius.circular(10)),
