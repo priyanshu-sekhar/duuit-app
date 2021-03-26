@@ -10,7 +10,7 @@ class OnboardingHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 15, right: 64, top: 26),
+      margin: EdgeInsets.only(left: 15, right: 64, top: 30),
       alignment: Alignment.topLeft,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -13,7 +13,6 @@ class OnboardingScreen4 extends StatelessWidget {
       appBar: Header(),
       body: Container(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             OnboardingHeader(
               header: 'Let\'s ',

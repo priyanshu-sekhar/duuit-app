@@ -55,8 +55,8 @@ class OnboardingScreen3 extends StatelessWidget {
       child: TextField(
         decoration: textFieldDecoration(
             labelText: 'Description', hintText: 'I would like to achieve'),
-        minLines: 5,
-        maxLines: 5,
+        minLines: 4,
+        maxLines: 4,
       ),
     );
   }
