@@ -51,7 +51,7 @@ class BuddyTile extends StatelessWidget {
             children: [
               Divider(color: Color.fromRGBO(0, 0, 0, 0.5)),
               Padding(padding: EdgeInsets.only(top: 8)),
-              alignText(text: userName),
+              alignText(text: 'Description'),
               Padding(padding: EdgeInsets.only(top: 4)),
               alignText(text: description)
             ],
