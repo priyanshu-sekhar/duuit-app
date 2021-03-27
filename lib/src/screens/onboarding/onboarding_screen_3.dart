@@ -1,6 +1,7 @@
 import 'package:duuit/src/args/onboarding/onboarding_screen_3_args.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_4.dart';
 import 'package:duuit/src/widgets/continue_button.dart';
+import 'package:duuit/src/widgets/description_field.dart';
 import 'package:duuit/src/widgets/header.dart';
 import 'package:duuit/src/widgets/onboarding_header.dart';
 import 'package:flutter/cupertino.dart';
@@ -50,15 +51,7 @@ class OnboardingScreen3 extends StatelessWidget {
   }
 
   Widget goalDescription() {
-    return Container(
-      margin: EdgeInsets.only(left: 40, right: 40),
-      child: TextField(
-        decoration: textFieldDecoration(
-            labelText: 'Description', hintText: 'I would like to achieve'),
-        minLines: 4,
-        maxLines: 4,
-      ),
-    );
+    return DescriptionField();
   }
 
   Widget doItFor() {
@@ -111,31 +104,5 @@ class OnboardingScreen3 extends StatelessWidget {
             ),
           ],
         ));
-  }
-
-  InputDecoration textFieldDecoration({String hintText, String labelText}) {
-    return InputDecoration(
-      contentPadding: EdgeInsets.all(10),
-      focusedBorder: textFieldBorder(),
-      enabledBorder: textFieldBorder(),
-      labelText: labelText,
-      hintText: hintText,
-      hintStyle: TextStyle(
-        fontSize: 14.0,
-        fontWeight: FontWeight.w400,
-      ),
-      labelStyle: TextStyle(
-          fontSize: 16.0,
-          fontWeight: FontWeight.w400,
-          color: Color(0xFF06172C)),
-      alignLabelWithHint: true,
-    );
-  }
-
-  OutlineInputBorder textFieldBorder() {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(color: Colors.black87),
-    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:duuit/src/widgets/app_back_button.dart';
+import 'package:duuit/src/widgets/app_rich_text.dart';
 import 'package:flutter/cupertino.dart';
 
 class OnboardingHeader extends StatelessWidget {
@@ -24,25 +25,9 @@ class OnboardingHeader extends StatelessWidget {
 
   Widget buildHeader() {
     return Flexible(
-        child: RichText(
-          text: TextSpan(
-              text: header,
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w800,
-                  color: Color(0xFF06172C)
-              ),
-              children: <TextSpan>[
-                TextSpan(
-                    text: highlightedText,
-                    style: TextStyle(
-                        color: Color(0xFF1071E2)
-                    )
-                )
-              ]
-          ),
-          softWrap: true,
-        )
-    );
+        child: AppRichText(
+      header: header,
+      highlightedText: highlightedText,
+    ));
   }
 }

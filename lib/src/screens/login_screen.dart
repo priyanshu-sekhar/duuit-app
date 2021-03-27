@@ -13,13 +13,18 @@ class LoginScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Column(
-          children: [
-            Padding(padding: EdgeInsets.only(top: toolbarHeight - 200)),
-            Logo(height: 90),
-            Padding(padding: EdgeInsets.only(bottom: 20.0)),
-            AppTitle(fontSize: 42.0)
-          ],
+        title: Container(
+          alignment: Alignment.center,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(padding: EdgeInsets.only(top: toolbarHeight - 200)),
+              Logo(height: 90),
+              Padding(padding: EdgeInsets.only(bottom: 20.0)),
+              AppTitle(fontSize: 42.0)
+            ],
+          ),
         ),
         toolbarHeight: toolbarHeight,
         shape: RoundedRectangleBorder(

@@ -12,7 +12,7 @@ class BuddyTile extends StatelessWidget {
       {this.profilePic = 'assets/profile_pic.png',
       this.userName = 'Siddharth Dash',
       this.description =
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisi tellus facilisis suspendisse adipiscing ac. In porttitor fusce imperdiet feugiat a volutpat.',
+          'Meri ek tang nakli hai...mai hockey ka bahut acha player tha.....ek din Uday bhai ko mere kisi baat par gussa aa gaya unhone meri hi hockey stick se meri tang tod di...par dil ke bahut ache hai turant hospital le gaye....meri nakli tang lagwayi or mujhe ye danda karid ke diya.....',
       this.goal = 'Workout',
       this.goalDuration = 'For 2 weeks'});
 

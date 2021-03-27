@@ -5,7 +5,7 @@ class AppBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Transform.translate(
-      offset: Offset(0, -5),
+      offset: Offset(8, -5),
       child:  IconButton(
         icon: Icon(
           Icons.arrow_back,

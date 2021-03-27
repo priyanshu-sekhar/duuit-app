@@ -2,6 +2,7 @@ import 'package:duuit/src/screens/onboarding/onboarding_screen_2.dart';
 import 'package:duuit/src/widgets/continue_button.dart';
 import 'package:duuit/src/widgets/header.dart';
 import 'package:duuit/src/widgets/onboarding_header.dart';
+import 'package:duuit/src/widgets/profile_pic.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,7 @@ class OnboardingScreen1 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(padding: EdgeInsets.only(top: 70)),
-          profilePic(),
+          ProfilePic(),
           userName(),
           Padding(padding: EdgeInsets.only(bottom: 15)),
           userBio(),
@@ -46,13 +47,6 @@ class OnboardingScreen1 extends StatelessWidget {
   Widget backButton(BuildContext context) {
     return Positioned(
       child: BackButton(),
-    );
-  }
-
-  Widget profilePic() {
-    return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-      child: Image.asset('assets/profile_pic.png'),
     );
   }
 

@@ -18,7 +18,10 @@ class ContinueButton extends StatelessWidget {
       ),
       child: buttonContent(),
       onPressed: () {
-        Navigator.pushNamed(context, route);
+        if (route != null)
+          Navigator.pushNamed(context, route);
+        else
+          showDialog(context: context, builder: (_) => AlertDialog(title: Text('aage kaam chal rha hai')));
       },
     );
   }
