@@ -32,7 +32,7 @@ class FeedTile extends StatelessWidget {
           'assets/avatar.png',
           height: 40,
         ),
-        Padding(padding: EdgeInsets.only(right: 4)),
+        Padding(padding: EdgeInsets.only(right: 8)),
         Expanded(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
