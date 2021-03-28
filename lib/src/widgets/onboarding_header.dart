@@ -17,6 +17,7 @@ class OnboardingHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppBackButton(),
+          Padding(padding: EdgeInsets.only(right: 4)),
           header != null ? buildHeader() : Container()
         ],
       ),

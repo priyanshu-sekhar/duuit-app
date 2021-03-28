@@ -35,7 +35,7 @@ class BuddyTile extends StatelessWidget {
   Widget itemTile() {
     return ExpansionTile(
       leading: Transform.translate(
-        offset: Offset(0, 10),
+        offset: Offset(5, 10),
         child: Image.asset(
           profilePic,
           height: 80,
@@ -64,7 +64,7 @@ class BuddyTile extends StatelessWidget {
 
   Transform transformChild({child}) {
     return Transform.translate(
-      offset: Offset(-10, 10),
+      offset: Offset(0, 10),
       child: child,
     );
   }
@@ -81,11 +81,11 @@ class BuddyTile extends StatelessWidget {
 
   Row userSubtitle() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         userGoal(),
-        Spacer(),
         Transform.translate(
-          offset: Offset(50, 0),
+          offset: Offset(35, 0),
           child: Text(
             goalDuration,
             style: TextStyle(

@@ -57,7 +57,7 @@ class OnboardingScreen4 extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ProfilePic(),
-        Padding(padding: EdgeInsets.only(left: 0)),
+        Padding(padding: EdgeInsets.only(left: 16)),
         Expanded(
             child: Column(
               mainAxisSize: MainAxisSize.min,

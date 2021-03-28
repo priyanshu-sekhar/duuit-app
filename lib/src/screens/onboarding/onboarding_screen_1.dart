@@ -31,6 +31,7 @@ class OnboardingScreen1 extends StatelessWidget {
         children: [
           Padding(padding: EdgeInsets.only(top: 70)),
           ProfilePic(),
+          Padding(padding: EdgeInsets.only(top: 36)),
           userName(),
           Padding(padding: EdgeInsets.only(bottom: 15)),
           userBio(),

@@ -4,6 +4,7 @@ class AppRichText extends StatelessWidget {
   final String leadingText;
   final String header;
   final String highlightedText;
+  final String warningText;
   final double fontSize;
   final FontWeight fontWeight;
 
@@ -11,6 +12,7 @@ class AppRichText extends StatelessWidget {
     this.leadingText = '',
     this.header,
     this.highlightedText,
+    this.warningText = '',
     this.fontSize = 30,
     this.fontWeight = FontWeight.w800
   });
@@ -36,6 +38,12 @@ class AppRichText extends StatelessWidget {
               text: highlightedText,
               style: TextStyle(
                 color: Color(0xFF1071E2),
+              ),
+            ),
+            TextSpan(
+              text: warningText,
+              style: TextStyle(
+                color: Color(0xFFF86E20),
               ),
             )
           ]),
