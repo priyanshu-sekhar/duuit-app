@@ -45,12 +45,6 @@ class OnboardingScreen1 extends StatelessWidget {
     );
   }
 
-  Widget backButton(BuildContext context) {
-    return Positioned(
-      child: BackButton(),
-    );
-  }
-
   Widget userName() {
     return Container(
       height: 40,

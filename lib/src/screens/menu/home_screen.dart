@@ -1,5 +1,6 @@
 import 'package:duuit/src/screens/tiles/feed_tile.dart';
 import 'package:duuit/src/screens/tiles/selected_category_tile.dart';
+import 'package:duuit/src/widgets/app_floating_button.dart';
 import 'package:duuit/src/widgets/app_rich_text.dart';
 import 'package:duuit/src/widgets/footer.dart';
 import 'package:duuit/src/widgets/header.dart';
@@ -13,46 +14,39 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: Header(),
-        body: Container(
-          margin: EdgeInsets.all(30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              welcomeWidget(),
-              Padding(padding: EdgeInsets.only(bottom: 15)),
-              AppRichText(
-                highlightedText: 'Continue with your goals',
-                fontSize: 22,
-              ),
-              Padding(padding: EdgeInsets.only(bottom: 20)),
-              Flexible(
-                flex: 2,
-                child: selectedCategoriesList(),
-              ),
-              Padding(padding: EdgeInsets.only(bottom: 10)),
-              viewAllWidget(),
-              Padding(padding: EdgeInsets.only(bottom: 10)),
-              feedHeaderWidget(),
-              Padding(padding: EdgeInsets.only(bottom: 10)),
-              Flexible(
-                flex: 2,
-                child: feedList(),
-              )
-            ],
-          ),
+      appBar: Header(),
+      body: Container(
+        margin: EdgeInsets.all(30),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            welcomeWidget(),
+            Padding(padding: EdgeInsets.only(bottom: 15)),
+            AppRichText(
+              highlightedText: 'Continue with your goals',
+              fontSize: 22,
+            ),
+            Padding(padding: EdgeInsets.only(bottom: 20)),
+            Flexible(
+              flex: 2,
+              child: selectedCategoriesList(),
+            ),
+            Padding(padding: EdgeInsets.only(bottom: 10)),
+            viewAllWidget(),
+            Padding(padding: EdgeInsets.only(bottom: 10)),
+            feedHeaderWidget(),
+            Padding(padding: EdgeInsets.only(bottom: 10)),
+            Flexible(
+              flex: 2,
+              child: feedList(),
+            )
+          ],
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(
-            Icons.add,
-            color: Colors.white,
-            size: 45,
-          ),
-          backgroundColor: Color(0xFF1071E2),
-          onPressed: () {},
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: Footer());
+      ),
+      floatingActionButton: AppFloatingButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: Footer(),
+    );
   }
 
   Widget welcomeWidget() {
