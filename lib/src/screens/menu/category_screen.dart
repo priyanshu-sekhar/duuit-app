@@ -11,7 +11,7 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final CategoryScreenArgs args =
-        ModalRoute.of(context).settings.arguments;
+        ModalRoute.of(context)!.settings.arguments as CategoryScreenArgs;
 
     return Scaffold(
       appBar: CategoryHeader(

@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FeedTile extends StatelessWidget {
-  String highlightedText;
-  String warningText;
-  String text;
+  String? highlightedText;
+  String? warningText;
+  String? text;
   
   FeedTile({this.text, this.warningText, this.highlightedText});
   
@@ -61,7 +61,7 @@ class FeedTile extends StatelessWidget {
     );
   }
 
-  Widget actionButton({IconData iconData, String text, String image}) {
+  Widget actionButton({IconData? iconData, required String text, String? image}) {
     return Container(
       padding: EdgeInsets.all(5),
       decoration: BoxDecoration(

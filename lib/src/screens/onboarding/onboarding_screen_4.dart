@@ -120,9 +120,9 @@ class OnboardingScreen4 extends StatelessWidget {
     );
   }
 
-  ButtonStyle buttonStyle({Color color}) {
+  ButtonStyle buttonStyle({Color? color}) {
     return ButtonStyle(
-      backgroundColor: MaterialStateProperty.all<Color>(color),
+      backgroundColor: MaterialStateProperty.all<Color?>(color),
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
       padding: MaterialStateProperty.all(
@@ -130,7 +130,7 @@ class OnboardingScreen4 extends StatelessWidget {
     );
   }
 
-  Widget buttonContent({String text, Color color, IconData icon}) {
+  Widget buttonContent({required String text, Color? color, IconData? icon}) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [

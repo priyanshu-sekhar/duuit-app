@@ -30,7 +30,7 @@ class Footer extends StatelessWidget {
     );
   }
 
-  Widget buildIcon({String image}) {
+  Widget buildIcon({String? image}) {
     return Image.asset(
       'assets/$image.png',
       height: 36,

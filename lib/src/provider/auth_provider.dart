@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 class AuthProvider extends InheritedWidget {
   final AuthBloc bloc;
 
-  AuthProvider({Key key, Widget child})
+  AuthProvider({Key? key, required Widget child})
       : bloc = AuthBloc(),
         super(key: key, child: child);
 
@@ -12,6 +12,6 @@ class AuthProvider extends InheritedWidget {
   bool updateShouldNotify(_) => true;
 
   static AuthBloc of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<AuthProvider>().bloc;
+    return context.dependOnInheritedWidgetOfExactType<AuthProvider>()!.bloc;
   }
 }

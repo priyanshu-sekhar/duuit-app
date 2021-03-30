@@ -41,7 +41,7 @@ class OnboardingScreen2 extends StatelessWidget {
   }
 
   Widget categoriesRow(BuildContext context,
-      {String category1, String category2}) {
+      {String? category1, String? category2}) {
     return Row(
       children: [
         categoryImage(context, category1),
@@ -50,7 +50,7 @@ class OnboardingScreen2 extends StatelessWidget {
     );
   }
 
-  Widget categoryImage(BuildContext context, String asset) {
+  Widget categoryImage(BuildContext context, String? asset) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(

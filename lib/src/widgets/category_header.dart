@@ -4,9 +4,9 @@ import 'package:duuit/extensions/string_extension.dart';
 import 'package:duuit/values/category_colors.dart';
 
 class CategoryHeader extends StatelessWidget with PreferredSizeWidget {
-  final String image;
-  final String header;
-  final Color backgroundColor;
+  final String? image;
+  final String? header;
+  final Color? backgroundColor;
 
   CategoryHeader({this.image, this.header, this.backgroundColor});
 
@@ -16,7 +16,7 @@ class CategoryHeader extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: CategoryColors.colorMap[header],
+      backgroundColor: CategoryColors.colorMap[header!],
       // iconTheme: IconThemeData(color: Color(0xFF06172C)),
       automaticallyImplyLeading: false,
       title: Container(
@@ -93,7 +93,7 @@ class CategoryHeader extends StatelessWidget with PreferredSizeWidget {
                   },
                 ),
                 Text(
-                  header.capitalize(),
+                  header!.capitalize(),
                   style: categoryTextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w700,
@@ -113,7 +113,7 @@ class CategoryHeader extends StatelessWidget with PreferredSizeWidget {
     );
   }
 
-  TextStyle categoryTextStyle({double fontSize, FontWeight fontWeight}) {
+  TextStyle categoryTextStyle({double? fontSize, FontWeight? fontWeight}) {
     return TextStyle(
       color: Color(0xFF06172C),
       fontWeight: fontWeight,
@@ -138,7 +138,7 @@ class CategoryHeader extends StatelessWidget with PreferredSizeWidget {
     );
   }
 
-  Widget dropdownButton({double width, List<String> options}) {
+  Widget dropdownButton({double? width, required List<String> options}) {
     return Container(
       width: width,
       height: 27,
@@ -160,7 +160,7 @@ class CategoryHeader extends StatelessWidget with PreferredSizeWidget {
         }).toList(),
         icon: Icon(Icons.keyboard_arrow_down_sharp),
         isExpanded: true,
-        onChanged: (newValue) {
+        onChanged: (dynamic newValue) {
           print(newValue);
         },
         underline: Container(),

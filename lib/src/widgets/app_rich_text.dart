@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppRichText extends StatelessWidget {
   final String leadingText;
-  final String header;
-  final String highlightedText;
-  final String warningText;
+  final String? header;
+  final String? highlightedText;
+  final String? warningText;
   final double fontSize;
   final FontWeight fontWeight;
 

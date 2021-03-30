@@ -3,8 +3,8 @@ import 'package:duuit/src/screens/menu/category_screen.dart';
 import 'package:flutter/cupertino.dart';
 
 class SelectedCategoryTile extends StatelessWidget {
-  final String category;
-  final String goal;
+  final String? category;
+  final String? goal;
 
   SelectedCategoryTile({this.category, this.goal});
 
@@ -37,7 +37,7 @@ class SelectedCategoryTile extends StatelessWidget {
               left: 20,
               width: 150,
               child: Text(
-                goal,
+                goal!,
                 style: TextStyle(
                   color: Color(0xFF06172C),
                   fontSize: 16,

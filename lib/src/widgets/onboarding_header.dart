@@ -3,8 +3,8 @@ import 'package:duuit/src/widgets/app_rich_text.dart';
 import 'package:flutter/cupertino.dart';
 
 class OnboardingHeader extends StatelessWidget {
-  final String header;
-  final String highlightedText;
+  final String? header;
+  final String? highlightedText;
 
   OnboardingHeader({this.header, this.highlightedText});
 

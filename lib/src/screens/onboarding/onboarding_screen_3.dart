@@ -13,7 +13,7 @@ class OnboardingScreen3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final OnboardingScreen3Args args =
-        ModalRoute.of(context).settings.arguments;
+        ModalRoute.of(context)!.settings.arguments as OnboardingScreen3Args;
 
     return Scaffold(
       appBar: Header(),
@@ -40,7 +40,7 @@ class OnboardingScreen3 extends StatelessWidget {
     );
   }
 
-  Widget selectedCategory(String category) {
+  Widget selectedCategory(String? category) {
     return Container(
       margin: EdgeInsets.only(left: 36, right: 36),
       child: Image.asset(
@@ -85,7 +85,7 @@ class OnboardingScreen3 extends StatelessWidget {
                   }).toList(),
                   icon: Icon(Icons.keyboard_arrow_down_sharp),
                   isExpanded: true,
-                  onChanged: (newValue) {
+                  onChanged: (dynamic newValue) {
                     print(newValue);
                   },
                   underline: Container(),

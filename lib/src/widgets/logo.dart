@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Logo extends StatelessWidget {
-  final double height;
+  final double? height;
 
   Logo({this.height});
 

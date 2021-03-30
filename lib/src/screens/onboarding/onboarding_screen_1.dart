@@ -65,7 +65,7 @@ class OnboardingScreen1 extends StatelessWidget {
     );
   }
 
-  InputDecoration textFieldDecoration({String hintText}) {
+  InputDecoration textFieldDecoration({String? hintText}) {
     return InputDecoration(
         contentPadding: EdgeInsets.all(10),
         focusedBorder: textFieldBorder(),

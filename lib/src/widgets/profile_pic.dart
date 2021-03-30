@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class ProfilePic extends StatelessWidget {
-  final double height;
+  final double? height;
 
   ProfilePic({this.height});
 

@@ -15,7 +15,7 @@ class DescriptionField extends StatelessWidget {
     );
   }
 
-  InputDecoration textFieldDecoration({String hintText, String labelText}) {
+  InputDecoration textFieldDecoration({String? hintText, String? labelText}) {
     return InputDecoration(
       contentPadding: EdgeInsets.all(10),
       focusedBorder: textFieldBorder(),

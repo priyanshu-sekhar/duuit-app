@@ -69,7 +69,7 @@ class BuddyTile extends StatelessWidget {
     );
   }
 
-  Align alignText({text}) {
+  Align alignText({required text}) {
     return Align(
       alignment: Alignment.topLeft,
       child: Text(

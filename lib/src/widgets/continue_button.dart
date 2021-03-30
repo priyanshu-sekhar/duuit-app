@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ContinueButton extends StatelessWidget {
-  final String route;
+  final String? route;
 
   ContinueButton({this.route});
 
@@ -19,7 +19,7 @@ class ContinueButton extends StatelessWidget {
       child: buttonContent(),
       onPressed: () {
         if (route != null)
-          Navigator.pushNamed(context, route);
+          Navigator.pushNamed(context, route!);
         else
           showDialog(context: context, builder: (_) => AlertDialog(title: Text('aage kaam chal rha hai')));
       },
