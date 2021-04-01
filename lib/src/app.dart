@@ -1,6 +1,6 @@
 import 'package:duuit/src/provider/auth_provider.dart';
 import 'package:duuit/src/screens/login_screen.dart';
-import 'package:duuit/src/screens/user_profile_screen.dart';
+import 'package:duuit/src/screens/menu/user_profile_screen.dart';
 import 'package:duuit/src/screens/menu/category_screen.dart';
 import 'package:duuit/src/screens/menu/home_screen.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_1.dart';
