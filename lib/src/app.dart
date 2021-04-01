@@ -1,5 +1,6 @@
 import 'package:duuit/src/provider/auth_provider.dart';
 import 'package:duuit/src/screens/login_screen.dart';
+import 'package:duuit/src/screens/user_profile_screen.dart';
 import 'package:duuit/src/screens/menu/category_screen.dart';
 import 'package:duuit/src/screens/menu/home_screen.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_1.dart';
@@ -31,7 +32,8 @@ class App extends StatelessWidget {
           OnboardingScreen4.route: (context) => OnboardingScreen4(),
           OnboardingScreen5.route: (context) => OnboardingScreen5(),
           HomeScreen.route: (context) => HomeScreen(),
-          CategoryScreen.route: (context) => CategoryScreen()
+          CategoryScreen.route: (context) => CategoryScreen(),
+          UserProfileScreen.route: (context) => UserProfileScreen(),
         },
       ),
     );
