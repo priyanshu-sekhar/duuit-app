@@ -1,10 +1,10 @@
 import 'package:duuit/src/blocs/auth_bloc.dart';
 import 'package:flutter/cupertino.dart';
 
-class AuthProvider extends InheritedWidget {
+class AppAuthProvider extends InheritedWidget {
   final AuthBloc bloc;
 
-  AuthProvider({Key? key, required Widget child})
+  AppAuthProvider({Key? key, required Widget child})
       : bloc = AuthBloc(),
         super(key: key, child: child);
 
@@ -12,6 +12,6 @@ class AuthProvider extends InheritedWidget {
   bool updateShouldNotify(_) => true;
 
   static AuthBloc of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<AuthProvider>()!.bloc;
+    return context.dependOnInheritedWidgetOfExactType<AppAuthProvider>()!.bloc;
   }
 }

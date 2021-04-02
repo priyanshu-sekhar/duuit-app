@@ -1,4 +1,4 @@
-import 'package:duuit/src/provider/auth_provider.dart';
+import 'package:duuit/src/provider/app_auth_provider.dart';
 import 'package:duuit/src/screens/login_screen.dart';
 import 'package:duuit/src/screens/menu/user_profile_screen.dart';
 import 'package:duuit/src/screens/menu/category_screen.dart';
@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AuthProvider(
+    return AppAuthProvider(
       child: MaterialApp(
         title: 'duuit!!',
         theme: ThemeData(
