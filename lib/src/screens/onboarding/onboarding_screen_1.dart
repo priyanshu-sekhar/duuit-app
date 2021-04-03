@@ -1,3 +1,4 @@
+import 'package:duuit/src/args/user_args.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_2.dart';
 import 'package:duuit/src/widgets/continue_button.dart';
 import 'package:duuit/src/widgets/header.dart';
@@ -11,14 +12,13 @@ class OnboardingScreen1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UserArgs userArgs = ModalRoute.of(context)!.settings.arguments as UserArgs;
+
     return Scaffold(
         appBar: Header(),
         body: Container(
           child: Stack(
-            children: [
-              OnboardingHeader(),
-              onboardingSection(context)
-            ],
+            children: [OnboardingHeader(), onboardingSection(context)],
           ),
         ));
   }
@@ -36,9 +36,13 @@ class OnboardingScreen1 extends StatelessWidget {
           Padding(padding: EdgeInsets.only(bottom: 15)),
           userBio(),
           Padding(padding: EdgeInsets.only(bottom: 42)),
-          ContinueButton(route: OnboardingScreen2.route),
+          ContinueButton(
+            route: OnboardingScreen2.route,
+          ),
           Padding(padding: EdgeInsets.only(bottom: 48)),
-          Image.asset('assets/g1.jpg',)
+          Image.asset(
+            'assets/g1.jpg',
+          )
         ],
       ),
       // color: Colors.orange,
@@ -74,14 +78,12 @@ class OnboardingScreen1 extends StatelessWidget {
         hintStyle: TextStyle(
           fontSize: 14.0,
           fontWeight: FontWeight.w400,
-        )
-    );
+        ));
   }
 
   OutlineInputBorder textFieldBorder() {
     return OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(color: Colors.black45)
-    );
+        borderSide: BorderSide(color: Colors.black45));
   }
 }

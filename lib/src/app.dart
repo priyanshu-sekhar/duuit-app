@@ -1,4 +1,4 @@
-import 'package:duuit/src/provider/app_auth_provider.dart';
+import 'package:duuit/src/blocs/auth_bloc.dart';
 import 'package:duuit/src/screens/login_screen.dart';
 import 'package:duuit/src/screens/menu/user_profile_screen.dart';
 import 'package:duuit/src/screens/menu/category_screen.dart';
@@ -10,11 +10,15 @@ import 'package:duuit/src/screens/onboarding/onboarding_screen_4.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_5.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AppAuthProvider(
+    return MultiProvider(
+      providers: [
+        Provider(create: (_) => AuthBloc())
+      ],
       child: MaterialApp(
         title: 'duuit!!',
         theme: ThemeData(

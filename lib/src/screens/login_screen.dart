@@ -1,13 +1,13 @@
-import 'package:amplify_flutter/amplify.dart';
 import 'package:duuit/src/args/user_args.dart';
+import 'package:duuit/src/blocs/auth_bloc.dart';
 import 'package:duuit/src/models/access_token.dart';
 import 'package:duuit/src/models/app_login_provider.dart';
-import 'package:duuit/src/provider/app_auth_provider.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_1.dart';
 import 'package:duuit/src/widgets/app_title.dart';
 import 'package:duuit/src/widgets/logo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -70,7 +70,7 @@ class LoginScreen extends StatelessWidget {
       required String image,
       required String text,
       required AppLoginProvider provider}) {
-    final authBlock = AppAuthProvider.of(context);
+    final authBlock = Provider.of<AuthBloc>(context);
 
     return StreamBuilder(
       stream: authBlock.accessToken,
@@ -81,13 +81,7 @@ class LoginScreen extends StatelessWidget {
         });
 
         return ElevatedButton(
-          onPressed: () async {
-            try {
-              authBlock.login(provider);
-            } on AmplifyException catch (e) {
-              print(e.message);
-            }
-          },
+          onPressed: () => authBlock.login(provider),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(

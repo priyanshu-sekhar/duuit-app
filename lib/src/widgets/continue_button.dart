@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 class ContinueButton extends StatelessWidget {
   final String? route;
+  final args;
 
-  ContinueButton({this.route});
+  ContinueButton({this.route, this.args});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class ContinueButton extends StatelessWidget {
       child: buttonContent(),
       onPressed: () {
         if (route != null)
-          Navigator.pushNamed(context, route!);
+          Navigator.pushNamed(context, route!, arguments: args);
         else
           showDialog(context: context, builder: (_) => AlertDialog(title: Text('aage kaam chal rha hai')));
       },
