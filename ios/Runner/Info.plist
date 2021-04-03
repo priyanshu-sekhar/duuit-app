@@ -49,6 +49,14 @@
                 <string>fb270093781316734</string>
             </array>
         </dict>
+        <dict>
+        	<key>CFBundleTypeRole</key>
+        	<string>Editor</string>
+        	<key>CFBundleURLSchemes</key>
+        	<array>
+        		<string>com.googleusercontent.apps.147795548263-ctuhs47a8fsa7986l9jcio9thv7tgirv</string>
+        	</array>
+        </dict>
     </array>
     <key>FacebookAppID</key>
     <string>270093781316734</string>
@@ -61,5 +69,6 @@
         <string>fbauth2</string>
         <string>fbshareextension</string>
     </array>
+
 </dict>
 </plist>

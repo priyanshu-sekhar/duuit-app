@@ -23,6 +23,11 @@ PODS:
     - AWSCore (~> 2.23.0)
     - AWSMobileClient (~> 2.23.0)
     - AWSPluginsCore (= 1.7.1)
+  - AppAuth (1.4.0):
+    - AppAuth/Core (= 1.4.0)
+    - AppAuth/ExternalUserAgent (= 1.4.0)
+  - AppAuth/Core (1.4.0)
+  - AppAuth/ExternalUserAgent (1.4.0)
   - AWSAuthCore (2.23.2):
     - AWSCore (= 2.23.2)
   - AWSCognitoIdentityProvider (2.23.2):
@@ -53,6 +58,21 @@ PODS:
     - FBSDKCoreKit (~> 5.5)
     - FBSDKLoginKit (~> 5.5)
     - Flutter
+  - google_sign_in (0.0.1):
+    - Flutter
+    - GoogleSignIn (~> 5.0)
+  - GoogleSignIn (5.0.2):
+    - AppAuth (~> 1.2)
+    - GTMAppAuth (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GTMAppAuth (1.1.0):
+    - AppAuth/Core (~> 1.4)
+    - GTMSessionFetcher (~> 1.4)
+  - GTMSessionFetcher (1.5.0):
+    - GTMSessionFetcher/Full (= 1.5.0)
+  - GTMSessionFetcher/Core (1.5.0)
+  - GTMSessionFetcher/Full (1.5.0):
+    - GTMSessionFetcher/Core (= 1.5.0)
   - ObjectMapper (4.2.0)
 
 DEPENDENCIES:
@@ -61,11 +81,13 @@ DEPENDENCIES:
   - amplify_flutter (from `.symlinks/plugins/amplify_flutter/ios`)
   - Flutter (from `Flutter`)
   - flutter_facebook_login (from `.symlinks/plugins/flutter_facebook_login/ios`)
+  - google_sign_in (from `.symlinks/plugins/google_sign_in/ios`)
 
 SPEC REPOS:
   trunk:
     - Amplify
     - AmplifyPlugins
+    - AppAuth
     - AWSAuthCore
     - AWSCognitoIdentityProvider
     - AWSCognitoIdentityProviderASF
@@ -74,6 +96,9 @@ SPEC REPOS:
     - AWSPluginsCore
     - FBSDKCoreKit
     - FBSDKLoginKit
+    - GoogleSignIn
+    - GTMAppAuth
+    - GTMSessionFetcher
     - ObjectMapper
 
 EXTERNAL SOURCES:
@@ -87,6 +112,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_facebook_login:
     :path: ".symlinks/plugins/flutter_facebook_login/ios"
+  google_sign_in:
+    :path: ".symlinks/plugins/google_sign_in/ios"
 
 SPEC CHECKSUMS:
   Amplify: 465c8699e8740e61b95f4ae41029847170a51e6d
@@ -94,6 +121,7 @@ SPEC CHECKSUMS:
   amplify_core: 8b38d20089fe4f225c14db6892f586bd03824a42
   amplify_flutter: d64b45e3a016e491bbb2e110fee57e150daf2164
   AmplifyPlugins: 4cf62a6216be79f4d5bd50c94b9af3ea9c134ccc
+  AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   AWSAuthCore: 59770d4c2c1b3dbb183b95d1867e3584b4816e54
   AWSCognitoIdentityProvider: 5bd6988ea7c8f9ee43151e19bdd8e803558ad45f
   AWSCognitoIdentityProviderASF: 30ccb19228b6e743805bf15a72278ca9f399bc21
@@ -104,6 +132,10 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: f1ea8026a58b52d30c9f2e6a58ca7d813619fb83
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   flutter_facebook_login: cfb5659f686b1c575ef205c6b6fd20db9679d3c4
+  google_sign_in: 6bd214b9c154f881422f5fe27b66aaa7bbd580cc
+  GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
+  GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
+  GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
 
 PODFILE CHECKSUM: 7368163408c647b7eb699d0d788ba6718e18fb8d

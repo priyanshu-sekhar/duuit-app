@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "147795548263",
+    "project_id": "duuit-5fc43",
+    "storage_bucket": "duuit-5fc43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147795548263:android:c6f3dfbafa182d35b41cc2",
+        "android_client_info": {
+          "package_name": "com.duuit.duuit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147795548263-5hm37pcag4uv6c4224n98s0s1eqh4hqi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.duuit.duuit",
+            "certificate_hash": "9b6e847b942b024797ce676d8402322a191141c1"
+          }
+        },
+        {
+          "client_id": "147795548263-cjkd3ftd4cqfvbb7c0upbiqhus9ej195.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEV4yIX_S9VnM4JObDZw2RWmBotngzWTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "147795548263-cjkd3ftd4cqfvbb7c0upbiqhus9ej195.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "147795548263-ctuhs47a8fsa7986l9jcio9thv7tgirv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.flutter.flutter.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

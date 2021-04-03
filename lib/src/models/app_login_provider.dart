@@ -1,0 +1,4 @@
+enum AppLoginProvider {
+  Google,
+  Facebook
+}

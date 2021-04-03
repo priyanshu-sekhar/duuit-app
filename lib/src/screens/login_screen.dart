@@ -1,7 +1,9 @@
 import 'package:amplify_flutter/amplify.dart';
 import 'package:duuit/src/args/user_args.dart';
 import 'package:duuit/src/models/access_token.dart';
+import 'package:duuit/src/models/app_login_provider.dart';
 import 'package:duuit/src/provider/app_auth_provider.dart';
+import 'package:duuit/src/screens/onboarding/onboarding_screen_1.dart';
 import 'package:duuit/src/widgets/app_title.dart';
 import 'package:duuit/src/widgets/logo.dart';
 import 'package:flutter/cupertino.dart';
@@ -47,16 +49,16 @@ class LoginScreen extends StatelessWidget {
       child: Column(
         children: [
           buildLoginButton(
-            context: context,
-            image: 'google.png',
-            text: 'Login with Google',
-          ),
+              context: context,
+              image: 'google.png',
+              text: 'Login with Google',
+              provider: AppLoginProvider.Google),
           Padding(padding: EdgeInsets.only(bottom: 20)),
           buildLoginButton(
-            context: context,
-            image: 'fb.png',
-            text: 'Login with Facebook',
-          ),
+              context: context,
+              image: 'fb.png',
+              text: 'Login with Facebook',
+              provider: AppLoginProvider.Facebook),
         ],
         mainAxisAlignment: MainAxisAlignment.start,
       ),
@@ -66,24 +68,22 @@ class LoginScreen extends StatelessWidget {
   Widget buildLoginButton(
       {required BuildContext context,
       required String image,
-      required String text}) {
+      required String text,
+      required AppLoginProvider provider}) {
     final authBlock = AppAuthProvider.of(context);
 
     return StreamBuilder(
       stream: authBlock.accessToken,
       builder: (context, AsyncSnapshot<AccessToken> snapshot) {
         authBlock.accessToken.listen((event) {
-          Navigator.pushNamed(
-            context,
-            '/onboarding/1',
-            arguments: UserArgs(userId: event.userId)
-          );
+          Navigator.pushNamed(context, OnboardingScreen1.route,
+              arguments: UserArgs(userId: event.userId));
         });
 
         return ElevatedButton(
           onPressed: () async {
             try {
-              authBlock.loginWithFb();
+              authBlock.login(provider);
             } on AmplifyException catch (e) {
               print(e.message);
             }
