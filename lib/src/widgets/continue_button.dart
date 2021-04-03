@@ -4,26 +4,39 @@ import 'package:flutter/material.dart';
 class ContinueButton extends StatelessWidget {
   final String? route;
   final args;
+  final bool shouldContinue;
 
-  ContinueButton({this.route, this.args});
+  ContinueButton({this.route, this.args, this.shouldContinue = true});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF1071E2)),
+        backgroundColor: MaterialStateProperty.resolveWith<Color>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.disabled))
+              return Theme.of(context).colorScheme.primary.withOpacity(0.5);
+            return Theme.of(context).colorScheme.primary;
+          },
+        ),
+        // backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF1071E2)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-        padding:
-        MaterialStateProperty.all(EdgeInsets.only(top: 12, bottom: 12, left: 20, right: 13)),
+        padding: MaterialStateProperty.all(
+            EdgeInsets.only(top: 12, bottom: 12, left: 20, right: 13)),
       ),
       child: buttonContent(),
-      onPressed: () {
-        if (route != null)
-          Navigator.pushNamed(context, route!, arguments: args);
-        else
-          showDialog(context: context, builder: (_) => AlertDialog(title: Text('aage kaam chal rha hai')));
-      },
+      onPressed: !shouldContinue
+          ? null
+          : () {
+              if (route != null)
+                Navigator.pushNamed(context, route!, arguments: args);
+              else
+                showDialog(
+                    context: context,
+                    builder: (_) =>
+                        AlertDialog(title: Text('aage kaam chal rha hai')));
+            },
     );
   }
 
@@ -34,10 +47,7 @@ class ContinueButton extends StatelessWidget {
         Text(
           'Continue',
           style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w600,
-              fontSize: 14
-          ),
+              color: Colors.white, fontWeight: FontWeight.w600, fontSize: 14),
         ),
         Padding(padding: EdgeInsets.only(right: 10)),
         Icon(

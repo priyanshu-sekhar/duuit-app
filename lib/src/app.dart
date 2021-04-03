@@ -1,4 +1,5 @@
 import 'package:duuit/src/blocs/auth_bloc.dart';
+import 'package:duuit/src/blocs/onboarding/onboarding_screen_1_bloc.dart';
 import 'package:duuit/src/screens/login_screen.dart';
 import 'package:duuit/src/screens/menu/user_profile_screen.dart';
 import 'package:duuit/src/screens/menu/category_screen.dart';
@@ -17,7 +18,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider(create: (_) => AuthBloc())
+        Provider(create: (_) => AuthBloc()),
+        Provider(create: (_) => OnboardingScreen1Bloc(),)
       ],
       child: MaterialApp(
         title: 'duuit!!',

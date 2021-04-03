@@ -1,4 +1,5 @@
 import 'package:duuit/src/args/user_args.dart';
+import 'package:duuit/src/blocs/onboarding/onboarding_screen_1_bloc.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_2.dart';
 import 'package:duuit/src/widgets/continue_button.dart';
 import 'package:duuit/src/widgets/header.dart';
@@ -6,14 +7,13 @@ import 'package:duuit/src/widgets/onboarding_header.dart';
 import 'package:duuit/src/widgets/profile_pic.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class OnboardingScreen1 extends StatelessWidget {
   static const route = '/onboarding/1';
 
   @override
   Widget build(BuildContext context) {
-    UserArgs userArgs = ModalRoute.of(context)!.settings.arguments as UserArgs;
-
     return Scaffold(
         appBar: Header(),
         body: Container(
@@ -24,6 +24,10 @@ class OnboardingScreen1 extends StatelessWidget {
   }
 
   Widget onboardingSection(BuildContext context) {
+    UserArgs userArgs = ModalRoute.of(context)!.settings.arguments as UserArgs;
+    final OnboardingScreen1Bloc bloc =
+        Provider.of<OnboardingScreen1Bloc>(context);
+
     return Container(
       margin: EdgeInsets.only(left: 60, right: 60),
       child: Column(
@@ -32,13 +36,11 @@ class OnboardingScreen1 extends StatelessWidget {
           Padding(padding: EdgeInsets.only(top: 70)),
           ProfilePic(),
           Padding(padding: EdgeInsets.only(top: 36)),
-          userName(),
+          userName(bloc),
           Padding(padding: EdgeInsets.only(bottom: 15)),
-          userBio(),
+          userBio(bloc),
           Padding(padding: EdgeInsets.only(bottom: 42)),
-          ContinueButton(
-            route: OnboardingScreen2.route,
-          ),
+          submit(bloc, userArgs),
           Padding(padding: EdgeInsets.only(bottom: 48)),
           Image.asset(
             'assets/g1.jpg',
@@ -49,36 +51,69 @@ class OnboardingScreen1 extends StatelessWidget {
     );
   }
 
-  Widget userName() {
+  Widget submit(OnboardingScreen1Bloc bloc, UserArgs userArgs) {
+    return StreamBuilder(
+      stream: bloc.submitValid,
+      builder: (context, snapshot) {
+        return ContinueButton(
+          route: OnboardingScreen2.route,
+          args: userArgs,
+          shouldContinue: snapshot.hasData,
+        );
+      },
+    );
+  }
+
+  Widget userName(OnboardingScreen1Bloc bloc) {
     return Container(
       height: 40,
-      child: TextField(
-        decoration: textFieldDecoration(hintText: 'Choose a cool username'),
+      child: StreamBuilder(
+        stream: bloc.userName,
+        builder: (context, AsyncSnapshot<String> snapshot) {
+          return TextField(
+            decoration: textFieldDecoration(
+              hintText: 'Choose a cool username',
+              errorText: snapshot.error,
+            ),
+            onChanged: bloc.changeUserName,
+          );
+        },
       ),
     );
   }
 
-  Widget userBio() {
+  Widget userBio(OnboardingScreen1Bloc bloc) {
     return Container(
       height: 144,
-      child: TextField(
-        minLines: 10,
-        maxLines: 10,
-        decoration: textFieldDecoration(hintText: 'Write about yourself'),
+      child: StreamBuilder(
+        stream: bloc.userBio,
+        builder: (context, AsyncSnapshot<String> snapshot) {
+          return TextField(
+            minLines: 10,
+            maxLines: 10,
+            decoration: textFieldDecoration(
+              hintText: 'Write about yourself',
+              errorText: snapshot.error,
+            ),
+            onChanged: bloc.changeUserBio,
+          );
+        },
       ),
     );
   }
 
-  InputDecoration textFieldDecoration({String? hintText}) {
+  InputDecoration textFieldDecoration({String? hintText, errorText}) {
     return InputDecoration(
-        contentPadding: EdgeInsets.all(10),
-        focusedBorder: textFieldBorder(),
-        enabledBorder: textFieldBorder(),
-        hintText: hintText,
-        hintStyle: TextStyle(
-          fontSize: 14.0,
-          fontWeight: FontWeight.w400,
-        ));
+      contentPadding: EdgeInsets.all(10),
+      focusedBorder: textFieldBorder(),
+      enabledBorder: textFieldBorder(),
+      hintText: hintText,
+      hintStyle: TextStyle(
+        fontSize: 14.0,
+        fontWeight: FontWeight.w400,
+      ),
+      errorText: errorText,
+    );
   }
 
   OutlineInputBorder textFieldBorder() {

@@ -1,4 +1,4 @@
-import 'package:duuit/src/args/onboarding/cateogry_screen_args.dart';
+import 'package:duuit/src/args/menu/cateogry_screen_args.dart';
 import 'package:duuit/src/screens/menu/category_screen.dart';
 import 'package:flutter/cupertino.dart';
 
