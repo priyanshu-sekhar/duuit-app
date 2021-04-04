@@ -40,7 +40,7 @@ class OnboardingScreen3Bloc extends OnboardingScreen3Validators {
       userId: newArgs.userId,
       name: EnumToString.convertToString(newArgs.goalCategory),
       description: newArgs.goalDescription!,
-      duration: newArgs.goalDescription!
+      duration: newArgs.goalDuration!
     ));
 
     Navigator.pushNamed(context, OnboardingScreen4.route,

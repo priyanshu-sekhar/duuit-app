@@ -1,20 +1,14 @@
+import 'package:duuit/src/models/response/find_buddies_response.dart';
+import 'package:duuit/src/models/response/goal_response.dart';
+import 'package:duuit/extensions/string_extension.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BuddyTile extends StatelessWidget {
   final String profilePic;
-  final String userName;
-  final String description;
-  final String goal;
-  final String goalDuration;
+  final FindBuddiesResponse item;
 
-  BuddyTile(
-      {this.profilePic = 'assets/profile_pic.png',
-      this.userName = 'Siddharth Dash',
-      this.description =
-          'Meri ek tang nakli hai...mai hockey ka bahut acha player tha.....ek din Uday bhai ko mere kisi baat par gussa aa gaya unhone meri hi hockey stick se meri tang tod di...par dil ke bahut ache hai turant hospital le gaye....meri nakli tang lagwayi or mujhe ye danda karid ke diya.....',
-      this.goal = 'Workout',
-      this.goalDuration = 'For 2 weeks'});
+  BuddyTile({this.profilePic = 'assets/profile_pic.png', required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +27,9 @@ class BuddyTile extends StatelessWidget {
   }
 
   Widget itemTile() {
+    // FIXME lol, fix this obviously
+    GoalResponse goal = item.goals[0];
+
     return ExpansionTile(
       leading: Transform.translate(
         offset: Offset(5, 10),
@@ -41,8 +38,8 @@ class BuddyTile extends StatelessWidget {
           height: 80,
         ),
       ),
-      title: transformChild(child: username()),
-      subtitle: transformChild(child: userSubtitle()),
+      title: transformChild(child: username(item.name)),
+      subtitle: transformChild(child: userSubtitle(goal)),
       tilePadding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
       children: [
         Transform.translate(
@@ -53,7 +50,7 @@ class BuddyTile extends StatelessWidget {
               Padding(padding: EdgeInsets.only(top: 8)),
               alignText(text: 'Description'),
               Padding(padding: EdgeInsets.only(top: 4)),
-              alignText(text: description)
+              alignText(text: goal.description)
             ],
           ),
         ),
@@ -79,15 +76,15 @@ class BuddyTile extends StatelessWidget {
     );
   }
 
-  Row userSubtitle() {
+  Row userSubtitle(GoalResponse goal) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        userGoal(),
+        userGoal(goal.name),
         Transform.translate(
           offset: Offset(35, 0),
           child: Text(
-            goalDuration,
+            goal.duration,
             style: TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 14,
@@ -99,16 +96,16 @@ class BuddyTile extends StatelessWidget {
     );
   }
 
-  Text userGoal() {
+  Text userGoal(String name) {
     return Text(
-      goal,
+      name.capitalize(),
       style: subtextStyle(),
     );
   }
 
-  Text username() {
+  Text username(String text) {
     return Text(
-      userName,
+      text,
       style: TextStyle(
         fontWeight: FontWeight.w600,
         fontSize: 17,

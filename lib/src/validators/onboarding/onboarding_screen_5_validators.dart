@@ -1,0 +1,2 @@
+class OnboardingScreen5Validators {
+}

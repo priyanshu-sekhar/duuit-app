@@ -1,15 +1,21 @@
+import 'package:duuit/src/blocs/onboarding/onboarding_screen_5_bloc.dart';
+import 'package:duuit/src/models/response/find_buddies_response.dart';
 import 'package:duuit/src/screens/tiles/buddy_tile.dart';
 import 'package:duuit/src/widgets/continue_button.dart';
 import 'package:duuit/src/widgets/header.dart';
 import 'package:duuit/src/widgets/onboarding_header.dart';
+import 'package:duuit/src/widgets/refresh.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class OnboardingScreen5 extends StatelessWidget {
   static const route = '/onboarding/5';
 
   @override
   Widget build(BuildContext context) {
+    OnboardingScreen5Bloc bloc = Provider.of<OnboardingScreen5Bloc>(context);
+
     return Scaffold(
       appBar: Header(),
       body: Container(
@@ -23,7 +29,7 @@ class OnboardingScreen5 extends StatelessWidget {
             Padding(padding: EdgeInsets.only(top: 20)),
             Container(
               padding: EdgeInsets.only(left: 36, right: 36),
-              child: buddyList(),
+              child: buddyList(bloc),
             ),
             Spacer(),
             Padding(padding: EdgeInsets.only(top: 24)),
@@ -59,7 +65,25 @@ class OnboardingScreen5 extends StatelessWidget {
     );
   }
 
-  Widget buddyList() {
-    return ListView(shrinkWrap: true, children: [BuddyTile()]);
+  Widget buddyList(OnboardingScreen5Bloc bloc) {
+    return StreamBuilder(
+      stream: bloc.buddies,
+      builder: (context, AsyncSnapshot<List<FindBuddiesResponse>> snapshot) {
+        if (!snapshot.hasData)
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+
+        return Refresh(
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: snapshot.data!.length,
+            itemBuilder: (BuildContext context, int index) {
+              return BuddyTile(item: snapshot.data![index]);
+            },
+          ),
+        );
+      },
+    );
   }
 }

@@ -38,7 +38,7 @@ class OnboardingScreen4 extends StatelessWidget {
               child: AppRichText(
                 leadingText: '${EnumToString.convertToString(args.goalCategory).capitalize()} ',
                 header: 'for ',
-                highlightedText: '2 weeks',
+                highlightedText: args.goalDuration,
                 fontSize: 22,
               ),
             ),
@@ -93,7 +93,6 @@ class OnboardingScreen4 extends StatelessWidget {
               ],
             )
         )
-
       ],
     );
   }
