@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:duuit/src/args/user_args.dart';
+import 'package:duuit/src/models/request/add_goal_request.dart';
 import 'package:duuit/src/resources/resource.dart';
 import 'package:http/http.dart';
 
@@ -20,6 +21,16 @@ class ApiResource implements Source {
         'Name': args.userName!,
         'Bio': args.userBio!,
       }),
+    );
+  }
+
+  addGoal(AddGoalRequest request) async {
+    await client.post(
+      Uri.http(_root, '/v2/goal'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(request)
     );
   }
 }
