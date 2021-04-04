@@ -2,7 +2,6 @@ import 'package:duuit/src/args/onboarding/onboarding_screen_3_args.dart';
 import 'package:duuit/src/blocs/onboarding/onboarding_screen_3_bloc.dart';
 import 'package:duuit/src/models/goal_category.dart';
 import 'package:duuit/src/models/goal_durations.dart';
-import 'package:duuit/src/screens/onboarding/onboarding_screen_4.dart';
 import 'package:duuit/src/widgets/continue_button.dart';
 import 'package:duuit/src/widgets/description_field.dart';
 import 'package:duuit/src/widgets/header.dart';
