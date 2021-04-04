@@ -1,5 +1,3 @@
-import 'package:duuit/src/screens/menu/home_screen.dart';
-import 'package:duuit/src/screens/onboarding/onboarding_screen_4.dart';
 import 'package:duuit/src/screens/tiles/buddy_tile.dart';
 import 'package:duuit/src/widgets/continue_button.dart';
 import 'package:duuit/src/widgets/header.dart';
@@ -29,13 +27,21 @@ class OnboardingScreen5 extends StatelessWidget {
             ),
             Spacer(),
             Padding(padding: EdgeInsets.only(top: 24)),
-            ContinueButton(route: HomeScreen.route),
+            submit(context),
             Padding(padding: EdgeInsets.only(top: 24)),
             Image.asset('assets/g3.jpg'),
             Padding(padding: EdgeInsets.only(bottom: 66))
           ],
         ),
       ),
+    );
+  }
+
+  Widget submit(BuildContext context) {
+    return ContinueButton(
+      onPressed: () {
+        Navigator.pushNamed(context, route);
+      },
     );
   }
 
@@ -54,8 +60,6 @@ class OnboardingScreen5 extends StatelessWidget {
   }
 
   Widget buddyList() {
-    return ListView(shrinkWrap: true, children: [
-      BuddyTile()
-    ]);
+    return ListView(shrinkWrap: true, children: [BuddyTile()]);
   }
 }

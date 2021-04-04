@@ -2,21 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ContinueButton extends StatelessWidget {
-  final String? route;
-  final args;
-  final bool shouldContinue;
+  final Function()? onPressed;
 
-  ContinueButton({this.route, this.args, this.shouldContinue = true});
+  ContinueButton({this.onPressed});
 
   @override
   Widget build(BuildContext context) {
+    // FIXME try changing to using theme for color, currently it reduces to lesser opacity on enabled
+    // Color color = Theme.of(context).colorScheme.primary;
+    Color color = Color(0xFF1071E2);
     return ElevatedButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.resolveWith<Color>(
           (Set<MaterialState> states) {
             if (states.contains(MaterialState.disabled))
-              return Theme.of(context).colorScheme.primary.withOpacity(0.5);
-            return Theme.of(context).colorScheme.primary;
+              return color.withOpacity(0.5);
+            return color;
           },
         ),
         // backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF1071E2)),
@@ -26,17 +27,7 @@ class ContinueButton extends StatelessWidget {
             EdgeInsets.only(top: 12, bottom: 12, left: 20, right: 13)),
       ),
       child: buttonContent(),
-      onPressed: !shouldContinue
-          ? null
-          : () {
-              if (route != null)
-                Navigator.pushNamed(context, route!, arguments: args);
-              else
-                showDialog(
-                    context: context,
-                    builder: (_) =>
-                        AlertDialog(title: Text('aage kaam chal rha hai')));
-            },
+      onPressed: onPressed,
     );
   }
 

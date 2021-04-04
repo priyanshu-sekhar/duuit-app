@@ -1,9 +1,12 @@
+import 'package:duuit/extensions/string_extension.dart';
+import 'package:duuit/src/args/onboarding/onboarding_screen_3_args.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_5.dart';
 import 'package:duuit/src/widgets/app_rich_text.dart';
 import 'package:duuit/src/widgets/description_field.dart';
 import 'package:duuit/src/widgets/header.dart';
 import 'package:duuit/src/widgets/onboarding_header.dart';
 import 'package:duuit/src/widgets/profile_pic.dart';
+import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +15,8 @@ class OnboardingScreen4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final OnboardingScreen3Args args = ModalRoute.of(context)!.settings.arguments as OnboardingScreen3Args;
+
     return Scaffold(
       appBar: Header(),
       body: Container(
@@ -24,14 +29,14 @@ class OnboardingScreen4 extends StatelessWidget {
             Padding(padding: EdgeInsets.only(bottom: 20)),
             Container(
               margin: EdgeInsets.only(left: 28, right: 36),
-              child: recapContent(),
+              child: recapContent(args),
             ),
             Padding(padding: EdgeInsets.only(bottom: 20)),
             Container(
               margin: EdgeInsets.only(left: 40),
               alignment: AlignmentDirectional.topStart,
               child: AppRichText(
-                leadingText: 'Read ',
+                leadingText: '${EnumToString.convertToString(args.goalCategory).capitalize()} ',
                 header: 'for ',
                 highlightedText: '2 weeks',
                 fontSize: 22,
@@ -51,7 +56,7 @@ class OnboardingScreen4 extends StatelessWidget {
     );
   }
 
-  Widget recapContent() {
+  Widget recapContent(OnboardingScreen3Args args) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +71,7 @@ class OnboardingScreen4 extends StatelessWidget {
               children: [
                 Padding(padding: EdgeInsets.only(bottom: 5)),
                 Text(
-                  'Siddharth Dash',
+                  args.userName,
                   style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w600
@@ -76,7 +81,7 @@ class OnboardingScreen4 extends StatelessWidget {
                 Flexible(
                   fit: FlexFit.loose,
                   child: Text(
-                      'Meri ek tang nakli hai...mai hockey ka bahut acha player tha.....',
+                      args.userBio,
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,

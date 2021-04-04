@@ -24,9 +24,9 @@ class OnboardingScreen1 extends StatelessWidget {
   }
 
   Widget onboardingSection(BuildContext context) {
-    UserArgs userArgs = ModalRoute.of(context)!.settings.arguments as UserArgs;
     final OnboardingScreen1Bloc bloc =
         Provider.of<OnboardingScreen1Bloc>(context);
+    UserArgs userArgs = ModalRoute.of(context)!.settings.arguments as UserArgs;
 
     return Container(
       margin: EdgeInsets.only(left: 60, right: 60),
@@ -51,14 +51,14 @@ class OnboardingScreen1 extends StatelessWidget {
     );
   }
 
-  Widget submit(OnboardingScreen1Bloc bloc, UserArgs userArgs) {
+  Widget submit(OnboardingScreen1Bloc bloc, UserArgs args) {
     return StreamBuilder(
       stream: bloc.submitValid,
       builder: (context, snapshot) {
         return ContinueButton(
-          route: OnboardingScreen2.route,
-          args: userArgs,
-          shouldContinue: snapshot.hasData,
+          onPressed: !snapshot.hasData ? null : () {
+            bloc.submit(context, args);
+          },
         );
       },
     );

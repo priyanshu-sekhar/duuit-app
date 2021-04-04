@@ -1,7 +1,10 @@
 import 'package:duuit/src/args/onboarding/onboarding_screen_3_args.dart';
+import 'package:duuit/src/args/user_args.dart';
+import 'package:duuit/src/models/goal_category.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_3.dart';
 import 'package:duuit/src/widgets/header.dart';
 import 'package:duuit/src/widgets/onboarding_header.dart';
+import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -32,16 +35,16 @@ class OnboardingScreen2 extends StatelessWidget {
       child: Column(
         children: [
           categoriesRow(context,
-              category1: 'reading', category2: 'meditate'),
+              category1: GoalCategory.reading, category2: GoalCategory.meditate),
           categoriesRow(context,
-              category1: 'workout', category2: 'misc')
+              category1: GoalCategory.workout, category2: GoalCategory.misc)
         ],
       ),
     );
   }
 
   Widget categoriesRow(BuildContext context,
-      {String? category1, String? category2}) {
+      {required GoalCategory category1, required GoalCategory category2}) {
     return Row(
       children: [
         categoryImage(context, category1),
@@ -50,20 +53,25 @@ class OnboardingScreen2 extends StatelessWidget {
     );
   }
 
-  Widget categoryImage(BuildContext context, String? asset) {
+  Widget categoryImage(BuildContext context, GoalCategory asset) {
+    final UserArgs args = ModalRoute.of(context)!.settings.arguments as UserArgs;
+
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(
           context,
           OnboardingScreen3.route,
           arguments: OnboardingScreen3Args(
-            selectedCategory: asset,
+            userId: args.userId,
+            userName: args.userName!,
+            userBio: args.userBio!,
+            goalCategory: asset,
           ),
         );
       },
       child: Container(
         child: Image.asset(
-          'assets/$asset.png',
+          'assets/${EnumToString.convertToString(asset)}.png',
           height: 160,
         ),
         decoration: BoxDecoration(
