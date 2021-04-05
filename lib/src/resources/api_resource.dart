@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'package:duuit/src/args/user_args.dart';
+import 'package:duuit/src/models/access_token.dart';
 import 'package:duuit/src/models/request/add_goal_request.dart';
 import 'package:duuit/src/models/request/add_user_request.dart';
-import 'package:duuit/src/models/response/find_buddies_response.dart';
+import 'package:duuit/src/models/response/user_details_response.dart';
 import 'package:duuit/src/resources/resource.dart';
 import 'package:http/http.dart';
 
@@ -32,7 +33,18 @@ class ApiResource implements Source {
     );
   }
 
-  Future<List<FindBuddiesResponse>> fetchBuddies() async {
+  Future<UserDetailsResponse> fetchUserDetails(AccessToken accessToken) async {
+    final response = await client.get(
+      Uri.http(_root, '/v2/user/${accessToken.userId}'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      }
+    );
+
+    return UserDetailsResponse.fromJson(jsonDecode(response.body));
+  }
+
+  Future<List<UserDetailsResponse>> fetchBuddies() async {
     final response = await client.get(
       Uri.http(_root, '/v2/user/all'),
       headers: <String, String>{
@@ -40,10 +52,10 @@ class ApiResource implements Source {
       },
     );
 
-    List<FindBuddiesResponse> buddies = [];
+    List<UserDetailsResponse> buddies = [];
     if (response.statusCode == 200) {
       Iterable l = jsonDecode(response.body);
-      buddies = List<FindBuddiesResponse>.from(l.map((item) => FindBuddiesResponse.fromJson(item)));
+      buddies = List<UserDetailsResponse>.from(l.map((item) => UserDetailsResponse.fromJson(item)));
     } else {
       print('Request failed with status: ${response.statusCode}.');
     }

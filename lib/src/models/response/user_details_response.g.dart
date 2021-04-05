@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'find_buddies_response.dart';
+part of 'user_details_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-FindBuddiesResponse _$FindBuddiesResponseFromJson(Map<String, dynamic> json) {
-  return FindBuddiesResponse(
+UserDetailsResponse _$FindBuddiesResponseFromJson(Map<String, dynamic> json) {
+  return UserDetailsResponse(
     uId: json['uId'] as String,
     name: json['name'] as String,
     bio: json['bio'] as String,
@@ -18,7 +18,7 @@ FindBuddiesResponse _$FindBuddiesResponseFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$FindBuddiesResponseToJson(
-        FindBuddiesResponse instance) =>
+        UserDetailsResponse instance) =>
     <String, dynamic>{
       'uId': instance.uId,
       'name': instance.name,

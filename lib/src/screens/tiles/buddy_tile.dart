@@ -1,4 +1,4 @@
-import 'package:duuit/src/models/response/find_buddies_response.dart';
+import 'package:duuit/src/models/response/user_details_response.dart';
 import 'package:duuit/src/models/response/goal_response.dart';
 import 'package:duuit/extensions/string_extension.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class BuddyTile extends StatelessWidget {
   final String profilePic;
-  final FindBuddiesResponse item;
+  final UserDetailsResponse item;
 
   BuddyTile({this.profilePic = 'assets/profile_pic.png', required this.item});
 

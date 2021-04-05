@@ -3,6 +3,7 @@ import 'package:duuit/src/blocs/onboarding/onboarding_screen_1_bloc.dart';
 import 'package:duuit/src/blocs/onboarding/onboarding_screen_3_bloc.dart';
 import 'package:duuit/src/blocs/onboarding/onboarding_screen_5_bloc.dart';
 import 'package:duuit/src/models/access_token.dart';
+import 'package:duuit/src/models/response/user_details_response.dart';
 import 'package:duuit/src/screens/login_screen.dart';
 import 'package:duuit/src/screens/menu/user_profile_screen.dart';
 import 'package:duuit/src/screens/menu/category_screen.dart';
@@ -19,8 +20,9 @@ import 'package:provider/provider.dart';
 class App extends StatelessWidget {
   static const String rootRoute = '/';
   final AccessToken? accessToken;
+  final UserDetailsResponse? userDetailsResponse;
   
-  App({this.accessToken});
+  App({this.accessToken, this.userDetailsResponse});
   
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,9 @@ class App extends StatelessWidget {
           rootRoute: (context) {
             if (accessToken == null)
               return LoginScreen();
-            return OnboardingScreen1(accessToken: accessToken);
+            if (userDetailsResponse == null)
+              return OnboardingScreen1(accessToken: accessToken);
+            return OnboardingScreen2();
           },
           OnboardingScreen1.route: (context) => OnboardingScreen1(),
           OnboardingScreen2.route: (context) => OnboardingScreen2(),
