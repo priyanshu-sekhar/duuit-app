@@ -1,6 +1,6 @@
 import 'package:duuit/src/args/user_args.dart';
 import 'package:duuit/src/blocs/onboarding/onboarding_screen_1_bloc.dart';
-import 'package:duuit/src/screens/onboarding/onboarding_screen_2.dart';
+import 'package:duuit/src/models/access_token.dart';
 import 'package:duuit/src/widgets/continue_button.dart';
 import 'package:duuit/src/widgets/header.dart';
 import 'package:duuit/src/widgets/onboarding_header.dart';
@@ -11,6 +11,9 @@ import 'package:provider/provider.dart';
 
 class OnboardingScreen1 extends StatelessWidget {
   static const route = '/onboarding/1';
+  final AccessToken? accessToken;
+
+  OnboardingScreen1({this.accessToken});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,7 @@ class OnboardingScreen1 extends StatelessWidget {
   Widget onboardingSection(BuildContext context) {
     final OnboardingScreen1Bloc bloc =
         Provider.of<OnboardingScreen1Bloc>(context);
-    UserArgs userArgs = ModalRoute.of(context)!.settings.arguments as UserArgs;
+    UserArgs userArgs = fetchUserArgs(context);
 
     return Container(
       margin: EdgeInsets.only(left: 60, right: 60),
@@ -51,14 +54,23 @@ class OnboardingScreen1 extends StatelessWidget {
     );
   }
 
+  UserArgs fetchUserArgs(BuildContext context) {
+    UserArgs userArgs = accessToken != null
+        ? UserArgs(userId: accessToken!.userId)
+        : ModalRoute.of(context)!.settings.arguments as UserArgs;
+    return userArgs;
+  }
+
   Widget submit(OnboardingScreen1Bloc bloc, UserArgs args) {
     return StreamBuilder(
       stream: bloc.submitValid,
       builder: (context, snapshot) {
         return ContinueButton(
-          onPressed: !snapshot.hasData ? null : () {
-            bloc.submit(context, args);
-          },
+          onPressed: !snapshot.hasData
+              ? null
+              : () {
+                  bloc.submit(context, args);
+                },
         );
       },
     );

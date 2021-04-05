@@ -2,6 +2,7 @@ import 'package:duuit/src/args/user_args.dart';
 import 'package:duuit/src/blocs/auth_bloc.dart';
 import 'package:duuit/src/models/access_token.dart';
 import 'package:duuit/src/models/app_login_provider.dart';
+import 'package:duuit/src/resources/resource.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_1.dart';
 import 'package:duuit/src/widgets/app_title.dart';
 import 'package:duuit/src/widgets/logo.dart';
@@ -10,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
+  final _resource = Resource();
+
   @override
   Widget build(BuildContext context) {
     final toolbarHeight = MediaQuery.of(context).size.height * 0.4;
@@ -76,6 +79,8 @@ class LoginScreen extends StatelessWidget {
       stream: authBlock.accessToken,
       builder: (context, AsyncSnapshot<AccessToken> snapshot) {
         authBlock.accessToken.listen((event) {
+          _resource.addLoginCredentials(event);
+
           Navigator.pushNamed(context, OnboardingScreen1.route,
               arguments: UserArgs(userId: event.userId));
         });

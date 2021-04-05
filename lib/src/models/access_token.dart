@@ -5,6 +5,8 @@ class AccessToken {
   final String? token;
   final String userId;
 
+  AccessToken({this.token, required this.userId});
+
   AccessToken.fromFBSignIn(FacebookAccessToken accessToken)
       : token = accessToken.token,
         userId = accessToken.userId;
