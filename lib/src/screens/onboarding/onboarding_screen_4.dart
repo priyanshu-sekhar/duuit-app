@@ -1,5 +1,7 @@
 import 'package:duuit/extensions/string_extension.dart';
 import 'package:duuit/src/args/onboarding/onboarding_screen_3_args.dart';
+import 'package:duuit/src/args/user_args.dart';
+import 'package:duuit/src/models/response/user_details_response.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_5.dart';
 import 'package:duuit/src/widgets/app_rich_text.dart';
 import 'package:duuit/src/widgets/description_field.dart';
@@ -12,10 +14,13 @@ import 'package:flutter/material.dart';
 
 class OnboardingScreen4 extends StatelessWidget {
   static const route = '/onboarding/4';
+  final UserDetailsResponse? userDetails;
+
+  OnboardingScreen4({this.userDetails});
 
   @override
   Widget build(BuildContext context) {
-    final OnboardingScreen3Args args = ModalRoute.of(context)!.settings.arguments as OnboardingScreen3Args;
+    OnboardingScreen3Args args = fetchArgs(context);
 
     return Scaffold(
       appBar: Header(),
@@ -36,7 +41,8 @@ class OnboardingScreen4 extends StatelessWidget {
               margin: EdgeInsets.only(left: 40),
               alignment: AlignmentDirectional.topStart,
               child: AppRichText(
-                leadingText: '${EnumToString.convertToString(args.goalCategory).capitalize()} ',
+                leadingText:
+                    '${EnumToString.convertToString(args.goalCategory).capitalize()} ',
                 header: 'for ',
                 highlightedText: args.goalDuration,
                 fontSize: 22,
@@ -56,6 +62,12 @@ class OnboardingScreen4 extends StatelessWidget {
     );
   }
 
+  OnboardingScreen3Args fetchArgs(BuildContext context) {
+    final OnboardingScreen3Args args =
+        ModalRoute.of(context)!.settings.arguments as OnboardingScreen3Args;
+    return args;
+  }
+
   Widget recapContent(OnboardingScreen3Args args) {
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -65,34 +77,26 @@ class OnboardingScreen4 extends StatelessWidget {
         Padding(padding: EdgeInsets.only(left: 16)),
         Expanded(
             child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(padding: EdgeInsets.only(bottom: 5)),
-                Text(
-                  args.userName,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(padding: EdgeInsets.only(bottom: 5)),
+            Text(
+              args.userName,
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+            ),
+            Padding(padding: EdgeInsets.only(bottom: 5)),
+            Flexible(
+              fit: FlexFit.loose,
+              child: Text(args.userBio,
                   style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600
-                  ),
-                ),
-                Padding(padding: EdgeInsets.only(bottom: 5)),
-                Flexible(
-                  fit: FlexFit.loose,
-                  child: Text(
-                      args.userBio,
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: Color.fromRGBO(0, 0, 0, 0.5)
-                      )
-                  ),
-                )
-
-              ],
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: Color.fromRGBO(0, 0, 0, 0.5))),
             )
-        )
+          ],
+        ))
       ],
     );
   }
@@ -106,7 +110,9 @@ class OnboardingScreen4 extends StatelessWidget {
           icon: Icons.check_circle_outline_sharp),
       onPressed: () {
         // Navigator.pushNamed(context, route);
-        showDialog(context: context, builder: (_) => AlertDialog(title: Text('ye kaunsa page hai ??')));
+        showDialog(
+            context: context,
+            builder: (_) => AlertDialog(title: Text('ye kaunsa page hai ??')));
       },
     );
   }

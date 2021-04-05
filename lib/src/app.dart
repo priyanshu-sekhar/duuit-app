@@ -48,17 +48,16 @@ class App extends StatelessWidget {
               return LoginScreen();
             if (userDetailsResponse == null)
               return OnboardingScreen1(accessToken: accessToken);
-            return OnboardingScreen2();
+            if (userDetailsResponse!.goals.length == 0)
+              return OnboardingScreen2(userDetails: userDetailsResponse);
+            return routeToFindBuddies(context);
           },
           OnboardingScreen1.route: (context) => OnboardingScreen1(),
           OnboardingScreen2.route: (context) => OnboardingScreen2(),
           OnboardingScreen3.route: (context) => OnboardingScreen3(),
           OnboardingScreen4.route: (context) => OnboardingScreen4(),
           OnboardingScreen5.route: (context) {
-            OnboardingScreen5Bloc bloc = Provider.of<OnboardingScreen5Bloc>(context);
-            bloc.fetchBuddies();
-
-            return OnboardingScreen5();
+            return routeToFindBuddies(context);
           },
           HomeScreen.route: (context) => HomeScreen(),
           CategoryScreen.route: (context) => CategoryScreen(),
@@ -66,5 +65,12 @@ class App extends StatelessWidget {
         },
       ),
     );
+  }
+
+  OnboardingScreen5 routeToFindBuddies(BuildContext context) {
+    OnboardingScreen5Bloc bloc = Provider.of<OnboardingScreen5Bloc>(context);
+    bloc.fetchBuddies();
+    
+    return OnboardingScreen5();
   }
 }

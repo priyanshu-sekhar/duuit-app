@@ -1,6 +1,7 @@
 import 'package:duuit/src/args/onboarding/onboarding_screen_3_args.dart';
 import 'package:duuit/src/args/user_args.dart';
 import 'package:duuit/src/models/goal_category.dart';
+import 'package:duuit/src/models/response/user_details_response.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_3.dart';
 import 'package:duuit/src/widgets/header.dart';
 import 'package:duuit/src/widgets/onboarding_header.dart';
@@ -10,6 +11,9 @@ import 'package:flutter/material.dart';
 
 class OnboardingScreen2 extends StatelessWidget {
   static const route = '/onboarding/2';
+  final UserDetailsResponse? userDetails;
+  
+  OnboardingScreen2({this.userDetails});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +58,7 @@ class OnboardingScreen2 extends StatelessWidget {
   }
 
   Widget categoryImage(BuildContext context, GoalCategory asset) {
-    final UserArgs args = ModalRoute.of(context)!.settings.arguments as UserArgs;
+    UserArgs args = fetchArgs(context);
 
     return GestureDetector(
       onTap: () {
@@ -79,5 +83,14 @@ class OnboardingScreen2 extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  UserArgs fetchArgs(BuildContext context) {
+    final UserArgs args = userDetails != null ? UserArgs(
+      userId: userDetails!.uId,
+      userName: userDetails!.name,
+      userBio: userDetails!.bio
+    ) : ModalRoute.of(context)!.settings.arguments as UserArgs;
+    return args;
   }
 }

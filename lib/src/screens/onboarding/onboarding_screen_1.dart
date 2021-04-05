@@ -29,7 +29,7 @@ class OnboardingScreen1 extends StatelessWidget {
   Widget onboardingSection(BuildContext context) {
     final OnboardingScreen1Bloc bloc =
         Provider.of<OnboardingScreen1Bloc>(context);
-    UserArgs userArgs = fetchUserArgs(context);
+    UserArgs userArgs = fetchArgs(context);
 
     return Container(
       margin: EdgeInsets.only(left: 60, right: 60),
@@ -54,7 +54,7 @@ class OnboardingScreen1 extends StatelessWidget {
     );
   }
 
-  UserArgs fetchUserArgs(BuildContext context) {
+  UserArgs fetchArgs(BuildContext context) {
     UserArgs userArgs = accessToken != null
         ? UserArgs(userId: accessToken!.userId)
         : ModalRoute.of(context)!.settings.arguments as UserArgs;
