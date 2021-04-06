@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CategoryScreen extends StatelessWidget {
-  static const route = '/category';
+  static const String route = '/category';
 
   @override
   Widget build(BuildContext context) {

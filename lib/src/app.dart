@@ -5,6 +5,8 @@ import 'package:duuit/src/blocs/onboarding/onboarding_screen_5_bloc.dart';
 import 'package:duuit/src/models/access_token.dart';
 import 'package:duuit/src/models/response/user_details_response.dart';
 import 'package:duuit/src/screens/login_screen.dart';
+import 'package:duuit/src/screens/menu/activity_screen.dart';
+import 'package:duuit/src/screens/menu/chat_list_screen.dart';
 import 'package:duuit/src/screens/menu/user_profile_screen.dart';
 import 'package:duuit/src/screens/menu/category_screen.dart';
 import 'package:duuit/src/screens/menu/home_screen.dart';
@@ -61,6 +63,8 @@ class App extends StatelessWidget {
           },
           HomeScreen.route: (context) => HomeScreen(),
           CategoryScreen.route: (context) => CategoryScreen(),
+          ActivityScreen.route: (context) => ActivityScreen(),
+          ChatListScreen.route: (context) => ChatListScreen(),
           UserProfileScreen.route: (context) => UserProfileScreen(),
         },
       ),

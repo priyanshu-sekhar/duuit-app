@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class OnboardingScreen1 extends StatelessWidget {
-  static const route = '/onboarding/1';
+  static const String route = '/onboarding/1';
   final AccessToken? accessToken;
 
   OnboardingScreen1({this.accessToken});

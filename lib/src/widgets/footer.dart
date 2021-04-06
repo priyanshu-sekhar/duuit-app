@@ -1,3 +1,7 @@
+import 'package:duuit/src/screens/menu/activity_screen.dart';
+import 'package:duuit/src/screens/menu/chat_list_screen.dart';
+import 'package:duuit/src/screens/menu/home_screen.dart';
+import 'package:duuit/src/screens/menu/user_profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,13 +12,13 @@ class Footer extends StatelessWidget {
       padding: EdgeInsets.only(left: 30, top: 20, bottom: 40, right: 30),
       child: Row(
         children: [
-          buildIcon(image: 'home-active', route: '/home', context: context),
+          buildIcon(image: 'home-active', route: HomeScreen.route, context: context),
           Spacer(),
-          buildIcon(image: 'file', route: '/home', context: context),
+          buildIcon(image: 'file', route: ActivityScreen.route, context: context),
           Spacer(),
-          buildIcon(image: 'message', route: '/home', context: context),
+          buildIcon(image: 'message', route: ChatListScreen.route, context: context),
           Spacer(),
-          buildIcon(image: 'user', route: '/profile', context: context)
+          buildIcon(image: 'user', route: UserProfileScreen.route, context: context)
         ],
       ),
       decoration: BoxDecoration(

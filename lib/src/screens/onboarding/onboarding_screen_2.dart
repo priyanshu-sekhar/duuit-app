@@ -10,7 +10,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen2 extends StatelessWidget {
-  static const route = '/onboarding/2';
+  static const String route = '/onboarding/2';
   final UserDetailsResponse? userDetails;
   
   OnboardingScreen2({this.userDetails});

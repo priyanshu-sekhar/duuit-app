@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class OnboardingScreen5 extends StatelessWidget {
-  static const route = '/onboarding/5';
+  static const String route = '/onboarding/5';
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class UserProfileScreen extends StatelessWidget {
-  static const route = '/profile';
+  static const String route = '/profile';
 
   @override
   Widget build(BuildContext context) {

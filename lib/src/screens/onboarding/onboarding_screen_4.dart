@@ -1,6 +1,5 @@
 import 'package:duuit/extensions/string_extension.dart';
 import 'package:duuit/src/args/onboarding/onboarding_screen_3_args.dart';
-import 'package:duuit/src/args/user_args.dart';
 import 'package:duuit/src/models/response/user_details_response.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_5.dart';
 import 'package:duuit/src/widgets/app_rich_text.dart';
@@ -13,7 +12,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen4 extends StatelessWidget {
-  static const route = '/onboarding/4';
+  static const String route = '/onboarding/4';
   final UserDetailsResponse? userDetails;
 
   OnboardingScreen4({this.userDetails});

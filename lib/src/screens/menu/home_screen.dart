@@ -9,7 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  static const route = '/home';
+  static const String route = '/home';
 
   @override
   Widget build(BuildContext context) {
