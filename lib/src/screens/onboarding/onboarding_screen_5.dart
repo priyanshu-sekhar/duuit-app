@@ -1,5 +1,6 @@
 import 'package:duuit/src/blocs/onboarding/onboarding_screen_5_bloc.dart';
 import 'package:duuit/src/models/response/user_details_response.dart';
+import 'package:duuit/src/screens/menu/home_screen.dart';
 import 'package:duuit/src/screens/tiles/buddy_tile.dart';
 import 'package:duuit/src/widgets/continue_button.dart';
 import 'package:duuit/src/widgets/header.dart';
@@ -46,7 +47,7 @@ class OnboardingScreen5 extends StatelessWidget {
   Widget submit(BuildContext context) {
     return ContinueButton(
       onPressed: () {
-        Navigator.pushNamed(context, route);
+        Navigator.pushNamed(context, HomeScreen.route);
       },
     );
   }
