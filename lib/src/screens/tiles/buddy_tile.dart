@@ -12,17 +12,28 @@ class BuddyTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PhysicalModel(
-      borderRadius: BorderRadius.circular(10),
-      child: ClipRRect(
-        child: Material(
-          color: Colors.white,
-          child: itemTile(),
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(3, 8),
+                  blurRadius: 20,
+                  color: Color.fromRGBO(6, 23, 44, 0.09),
+                ),
+              ],
+          ),
+          child: ClipRRect(
+            child: Material(
+              color: Colors.white,
+              child: itemTile(),
+            ),
+            borderRadius: BorderRadius.circular(20),
+          ),
         ),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      elevation: 4,
-      color: Color.fromRGBO(6, 23, 44, 0.09),
+        Padding(padding: EdgeInsets.only(bottom: 18))
+      ],
     );
   }
 
@@ -32,7 +43,7 @@ class BuddyTile extends StatelessWidget {
 
     return ExpansionTile(
       leading: Transform.translate(
-        offset: Offset(5, 10),
+        offset: Offset(5, 5),
         child: Image.asset(
           profilePic,
           height: 80,
@@ -61,7 +72,7 @@ class BuddyTile extends StatelessWidget {
 
   Transform transformChild({child}) {
     return Transform.translate(
-      offset: Offset(0, 10),
+      offset: Offset(0, 5),
       child: child,
     );
   }

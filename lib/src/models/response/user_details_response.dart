@@ -11,6 +11,6 @@ class UserDetailsResponse {
 
   UserDetailsResponse({required this.uId, required this.name, required this.bio, required this.goals});
 
-  factory UserDetailsResponse.fromJson(Map<String, dynamic> json) => _$FindBuddiesResponseFromJson(json);
-  Map<String, dynamic> toJson() => _$FindBuddiesResponseToJson(this);
+  factory UserDetailsResponse.fromJson(Map<String, dynamic> json) => _$UserDetailsResponseFromJson(json);
+  Map<String, dynamic> toJson() => _$UserDetailsResponseToJson(this);
 }

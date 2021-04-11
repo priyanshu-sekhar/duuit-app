@@ -1,4 +1,6 @@
 import 'package:duuit/src/blocs/auth_bloc.dart';
+import 'package:duuit/src/blocs/menu/category_screen_bloc.dart';
+import 'package:duuit/src/blocs/menu/user_bloc.dart';
 import 'package:duuit/src/blocs/onboarding/onboarding_screen_1_bloc.dart';
 import 'package:duuit/src/blocs/onboarding/onboarding_screen_3_bloc.dart';
 import 'package:duuit/src/blocs/onboarding/onboarding_screen_5_bloc.dart';
@@ -33,7 +35,9 @@ class App extends StatelessWidget {
         Provider(create: (_) => AuthBloc()),
         Provider(create: (_) => OnboardingScreen1Bloc()),
         Provider(create: (_) => OnboardingScreen3Bloc()),
-        Provider(create: (_) => OnboardingScreen5Bloc())
+        Provider(create: (_) => OnboardingScreen5Bloc()),
+        Provider(create: (_) => UserBloc()),
+        Provider(create: (_) => CategoryScreenBloc())
       ],
       child: MaterialApp(
         title: 'duuit!!',
@@ -61,11 +65,24 @@ class App extends StatelessWidget {
           OnboardingScreen5.route: (context) {
             return routeToFindBuddies(context);
           },
-          HomeScreen.route: (context) => HomeScreen(),
-          CategoryScreen.route: (context) => CategoryScreen(),
+          HomeScreen.route: (context) {
+            UserBloc bloc = Provider.of<UserBloc>(context);
+            bloc.fetchUserDetails(userDetailsResponse);
+            return HomeScreen();
+          },
+          CategoryScreen.route: (context) {
+            CategoryScreenBloc bloc = Provider.of<CategoryScreenBloc>(context);
+            bloc.fetchGoalProgressRecent(context);
+
+            return CategoryScreen();
+          },
           ActivityScreen.route: (context) => ActivityScreen(),
           ChatListScreen.route: (context) => ChatListScreen(),
-          UserProfileScreen.route: (context) => UserProfileScreen(),
+          UserProfileScreen.route: (context) {
+            UserBloc bloc = Provider.of<UserBloc>(context);
+            bloc.fetchUserDetails(userDetailsResponse);
+            return UserProfileScreen();
+          }
         },
       ),
     );
@@ -76,5 +93,11 @@ class App extends StatelessWidget {
     bloc.fetchBuddies();
     
     return OnboardingScreen5();
+  }
+
+  static T fetchArgs<T>(BuildContext context) {
+    final T args =
+    ModalRoute.of(context)!.settings.arguments as T;
+    return args;
   }
 }

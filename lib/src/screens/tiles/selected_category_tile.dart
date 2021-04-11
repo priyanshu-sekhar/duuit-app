@@ -1,12 +1,14 @@
-import 'package:duuit/src/args/menu/cateogry_screen_args.dart';
+import 'package:duuit/src/args/menu/category_screen_args.dart';
 import 'package:duuit/src/screens/menu/category_screen.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class SelectedCategoryTile extends StatelessWidget {
+  final int goalId;
   final String? category;
   final String? goal;
 
-  SelectedCategoryTile({this.category, this.goal});
+  SelectedCategoryTile({required this.goalId, this.category, this.goal});
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +18,7 @@ class SelectedCategoryTile extends StatelessWidget {
           context,
           CategoryScreen.route,
           arguments: CategoryScreenArgs(
+            goalId: goalId,
             category: category,
             header: category,
             backgroundColor: Color(0xFFA1A5FF)

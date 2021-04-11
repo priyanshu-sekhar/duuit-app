@@ -1,5 +1,6 @@
 import 'package:duuit/extensions/string_extension.dart';
 import 'package:duuit/src/args/onboarding/onboarding_screen_3_args.dart';
+import 'package:duuit/src/args/onboarding/onboarding_screen_5_args.dart';
 import 'package:duuit/src/models/response/user_details_response.dart';
 import 'package:duuit/src/screens/onboarding/onboarding_screen_5.dart';
 import 'package:duuit/src/widgets/app_rich_text.dart';
@@ -52,7 +53,7 @@ class OnboardingScreen4 extends StatelessWidget {
             Padding(padding: EdgeInsets.only(bottom: 58)),
             trackProgressButton(context),
             Padding(padding: EdgeInsets.only(bottom: 16)),
-            findBuddiesButton(context),
+            findBuddiesButton(context, args),
             Padding(padding: EdgeInsets.only(top: 24)),
             Image.asset('assets/g4.jpg'),
           ],
@@ -116,7 +117,7 @@ class OnboardingScreen4 extends StatelessWidget {
     );
   }
 
-  Widget findBuddiesButton(BuildContext context) {
+  Widget findBuddiesButton(BuildContext context, OnboardingScreen3Args args) {
     return ElevatedButton(
       style: buttonStyle(color: Colors.white),
       child: buttonContent(
@@ -124,7 +125,13 @@ class OnboardingScreen4 extends StatelessWidget {
           color: Color(0xFF1071E2),
           icon: Icons.people_alt_outlined),
       onPressed: () {
-        Navigator.pushNamed(context, OnboardingScreen5.route);
+        Navigator.pushNamed(
+          context,
+          OnboardingScreen5.route,
+          arguments: OnboardingScreen5Args(
+            userId: args.userId,
+          ),
+        );
       },
     );
   }

@@ -9,7 +9,7 @@ void main() async {
   // debugPaintSizeEnabled = true;
   final _resource = Resource();
   AccessToken? accessToken = await _resource.fetchLoginCredentials();
-  UserDetailsResponse? userDetailsResponse = accessToken != null ? await _resource.fetchUserDetails(accessToken) : null;
+  UserDetailsResponse? userDetailsResponse = accessToken != null ? await _resource.fetchUserDetails(accessToken.userId) : null;
 
   runApp(
       App(accessToken: accessToken, userDetailsResponse: userDetailsResponse)

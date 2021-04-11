@@ -1,3 +1,5 @@
+import 'package:duuit/src/args/menu/home_screen_args.dart';
+import 'package:duuit/src/args/onboarding/onboarding_screen_5_args.dart';
 import 'package:duuit/src/blocs/onboarding/onboarding_screen_5_bloc.dart';
 import 'package:duuit/src/models/response/user_details_response.dart';
 import 'package:duuit/src/screens/menu/home_screen.dart';
@@ -16,6 +18,7 @@ class OnboardingScreen5 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     OnboardingScreen5Bloc bloc = Provider.of<OnboardingScreen5Bloc>(context);
+    OnboardingScreen5Args args = fetchArgs(context);
 
     return Scaffold(
       appBar: Header(),
@@ -34,7 +37,7 @@ class OnboardingScreen5 extends StatelessWidget {
             ),
             Spacer(),
             Padding(padding: EdgeInsets.only(top: 24)),
-            submit(context),
+            submit(context, args),
             Padding(padding: EdgeInsets.only(top: 24)),
             Image.asset('assets/g3.jpg'),
             Padding(padding: EdgeInsets.only(bottom: 66))
@@ -44,7 +47,7 @@ class OnboardingScreen5 extends StatelessWidget {
     );
   }
 
-  Widget submit(BuildContext context) {
+  Widget submit(BuildContext context, OnboardingScreen5Args args) {
     return ContinueButton(
       onPressed: () {
         Navigator.pushNamed(context, HomeScreen.route);
@@ -86,5 +89,11 @@ class OnboardingScreen5 extends StatelessWidget {
         );
       },
     );
+  }
+
+  static OnboardingScreen5Args fetchArgs(BuildContext context) {
+    final OnboardingScreen5Args args =
+        ModalRoute.of(context)!.settings.arguments as OnboardingScreen5Args;
+    return args;
   }
 }

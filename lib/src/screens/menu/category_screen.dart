@@ -1,4 +1,4 @@
-import 'package:duuit/src/args/menu/cateogry_screen_args.dart';
+import 'package:duuit/src/args/menu/category_screen_args.dart';
 import 'package:duuit/src/screens/tiles/progress_tile.dart';
 import 'package:duuit/src/widgets/app_floating_button.dart';
 import 'package:duuit/src/widgets/app_rich_text.dart';
@@ -54,4 +54,6 @@ class CategoryScreen extends StatelessWidget {
       ],
     );
   }
+
+
 }

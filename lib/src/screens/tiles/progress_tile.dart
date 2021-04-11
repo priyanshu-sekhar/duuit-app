@@ -65,6 +65,16 @@ class ProgressTile extends StatelessWidget {
       },
     ];
 
+    List<Widget> row1 = [], row2 = [];
+
+    for (int i = 0; i < progress.length; i++) {
+      var each = progress[i];
+      row2.add(progressCircle(each));
+      if (i < progress.length - 1) {
+        // if (each['done'] && progress[i + 1])
+      }
+    }
+
 
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -74,8 +84,8 @@ class ProgressTile extends StatelessWidget {
         progressCircle(progress[1]),
         Spacer(),
         progressCircle(progress[2]),
-        // Flexible(child: Container(height: 2, color: Color(0xFF1071E2), margin: EdgeInsets.only(top: 24),)),
-        Spacer(),
+        Flexible(child: Container(height: 2, color: Color(0xFF1071E2), margin: EdgeInsets.only(top: 0),)),
+        // Spacer(),
         progressCircle(progress[3]),
         Spacer(),
         progressCircle(progress[4]),
@@ -87,21 +97,32 @@ class ProgressTile extends StatelessWidget {
     );
   }
 
+  Widget progressDays(progress) {
+    return Text(
+      progress['day'],
+      style: TextStyle(
+        fontWeight: FontWeight.w400,
+        fontSize: 12,
+        color: Colors.black45
+      ),
+    );
+  }
+
   Widget progressCircle(progress) {
     // const Color border = progress['past'] != null  ? Color(0xFF1071E2) : Color.fromRGBO(0, 0, 0, 0.5);
     // const Color inner = progress['done'] ? Color(0xFF1071E2) : Colors.white;
 
     return Column(
       children: [
-        Text(
-          progress['day'],
-          style: TextStyle(
-            fontWeight: FontWeight.w400,
-            fontSize: 12,
-            color: Colors.black45
-          ),
-        ),
-        Padding(padding: EdgeInsets.only(bottom: 10)),
+        // Text(
+        //   progress['day'],
+        //   style: TextStyle(
+        //     fontWeight: FontWeight.w400,
+        //     fontSize: 12,
+        //     color: Colors.black45
+        //   ),
+        // ),
+        // Padding(padding: EdgeInsets.only(bottom: 10)),
         Container(
           decoration: BoxDecoration(
             border: Border.all(
